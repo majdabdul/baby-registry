@@ -76,8 +76,14 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .progress{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);white-space:nowrap}
 .progress .track{width:110px;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
 .progress .fill{height:100%;background:var(--good);width:0%;transition:width .4s}
-.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent);-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent);padding-right:48px}
 .chips::-webkit-scrollbar{display:none}
+@media (min-width:701px){.chips{flex-wrap:wrap;overflow:visible;mask-image:none;-webkit-mask-image:none;padding-right:0}}
+@media (max-width:640px){.bar .progress{display:none}}
+.heroprog{display:none;align-items:center;gap:10px;font-size:13.5px;color:var(--muted)}
+.heroprog .track{flex:1;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.heroprog .fill{height:100%;background:var(--good);width:0%}
+@media (max-width:640px){.heroprog{display:flex}}
 .chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-size:13.5px;font-weight:500;cursor:pointer;white-space:nowrap}
 .chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 
@@ -127,6 +133,8 @@ section .blurb{color:var(--muted);font-size:14.5px;margin:6px 0 0;max-width:70ch
 .status .x:hover{color:var(--accent-ink);background:var(--card)}
 .ribbon{position:absolute;top:12px;right:12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--good);color:#fff;padding:3px 8px;border-radius:999px}
 .ribbon.muted{background:var(--muted)}
+.item.done .ttl h3,.item.hiddenitem .ttl h3{padding-right:72px}
+.links .or{font-size:12.5px;color:var(--muted);align-self:center}
 .item.hiddenitem{opacity:.55;border-style:dashed}
 .btn.small{padding:7px 10px;font-size:13px}
 #ownerBar{background:var(--accent-soft);color:var(--fg);border-radius:10px;padding:10px 14px}
@@ -152,17 +160,18 @@ footer .sync{font-variant-numeric:tabular-nums}
 <body>
 
 <header class="wrap hero">
-  <span class="eyebrow">Baby registry</span>
+  <span class="eyebrow">Majd’s baby registry</span>
   <h1 id="title">A little one is <em>on the way</em></h1>
   <p id="intro">Thank you for thinking of us. Everything below is what we're hoping to have ready before the baby arrives. Pick anything you like, buy it wherever is easiest for you, and tap <strong>“I bought this”</strong> so nobody ends up buying the same thing twice.</p>
   <div class="howto">
     <div><b>1 · Pick an item</b>Use the links on each card, or buy it anywhere you prefer.</div>
-    <div><b>2 · Mark it bought</b>Tap “I bought this” and leave your name. It updates for everyone instantly.</div>
+    <div><b>2 · Mark it bought</b>Tap “I bought this” and leave your name. Everyone else sees it within a minute.</div>
     <div><b>3 · Send it to us</b>Deliver to the address below, or bring it along when you visit.</div>
   </div>
 </header>
 
 <div class="wrap">
+  <div class="heroprog"><div class="track"><div class="fill" id="fill2"></div></div><span id="prog2">—</span></div>
   <div class="address" id="address">
     <div class="eyebrow">Delivery address · عنوان التوصيل</div>
     <div class="lines">
@@ -172,7 +181,7 @@ footer .sync{font-variant-numeric:tabular-nums}
           <div class="val" id="addrFull">7362, No. 469, Al Malqa, Riyadh 13524</div>
           <div class="ar">٧٣٦٢، رقم ٤٦٩، حي الملقا، الرياض ١٣٥٢٤</div>
         </div>
-        <button class="copy" data-copy="7362, No. 469, Al Malqa, Riyadh 13524">Copy</button>
+        <button class="copy" data-copy="7362, No. 469, Al Malqa, Riyadh 13524 — ٧٣٦٢، رقم ٤٦٩، حي الملقا، الرياض ١٣٥٢٤ — Short address: RRMB7362">Copy</button>
       </div>
       <div class="row">
         <div>
@@ -216,7 +225,7 @@ footer .sync{font-variant-numeric:tabular-nums}
 const FAMILY = 'Majd';
 // Shared store: Firebase Realtime Database (REST). Data lives at /claims/{itemId}/{claimId} and /hidden/{itemId}.
 const DB = 'https://baby-registry-85f68-default-rtdb.europe-west1.firebasedatabase.app';
-const POLL_MS = 25000;
+const POLL_MS = 15000;
 
 const ITEMS = window.REGISTRY_ITEMS || [];
 const CATS = window.REGISTRY_CATEGORIES || [];
@@ -294,8 +303,18 @@ function matches(item){
   if(hidden[item.id] && !OWNER) return false;
   if(filter.cat!=='all' && item.cat!==filter.cat) return false;
   if(filter.hideDone && isDone(item)) return false;
-  if(filter.q){ const h = (item.name+' '+(item.brand||'')+' '+(item.store||'')+' '+(item.note||'')).toLowerCase(); if(!h.includes(filter.q)) return false; }
+  if(filter.q){ const h = (item.name+' '+(item.brand||'')+' '+(item.store||'')+' '+(item.note||'')+' '+(CATS.find(c=>c.id===item.cat)||{}).name).toLowerCase(); if(!h.includes(filter.q) && !fuzzy(filter.q, h)) return false; }
   return true;
+}
+// Tolerates one typo ("diper" finds "diaper") on words of 4+ letters.
+function fuzzy(q, text){
+  if(q.length < 4) return false;
+  return text.split(/[^a-z0-9]+/).some(w => w.length >= 4 && Math.abs(w.length-q.length) <= 1 && lev(q, w) <= 1);
+}
+function lev(a, b){
+  const m=a.length, n=b.length; let prev=Array.from({length:n+1},(_,i)=>i), cur=new Array(n+1);
+  for(let i=1;i<=m;i++){ cur[0]=i; for(let j=1;j<=n;j++){ cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1)); } [prev,cur]=[cur,prev]; }
+  return prev[n];
 }
 function cardHTML(item){
   const done = isDone(item), g = gifted(item), n = need(item);
@@ -303,11 +322,12 @@ function cardHTML(item){
   const thumb = item.img ? `<img src="${esc(item.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ICONS.box;
   const links = [];
   if(item.url) links.push(`<a class="primary" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.store ? 'Buy at '+item.store : 'View item')}</a>`);
+  if((item.alt||[]).length) links.push('<span class="or">or</span>');
   (item.alt||[]).forEach(a => links.push(`<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)}</a>`));
   const statusRows = cs.map(c => {
     const mine = c.dev===dev;
     const canRemove = mine || OWNER;
-    return `<div class="status">${ICONS.check}<span class="who">${esc(c.name||'Someone')}${n>1?` · ${c.qty||1}`:''}</span>${canRemove?`<button class="x" data-undo="${esc(item.id)}" data-cid="${esc(c.id)}">${mine?'Undo':'Remove'}</button>`:''}</div>`;
+    return `<div class="status">${ICONS.check}<span class="who">${esc(c.name||'Someone')}${n>1?` · ${c.qty||1}`:''}</span>${canRemove?`<button class="x" data-undo="${esc(item.id)}" data-cid="${esc(c.id)}" data-label="${mine?'Undo':'Remove'}">${mine?'Undo':'Remove'}</button>`:''}</div>`;
   }).join('');
   let action = '';
   if(openForm===item.id){
@@ -346,9 +366,11 @@ function render(quiet){
   });
   main.innerHTML = shown ? html.join('') : `<div class="empty">Nothing matches that. Try another word or category.</div>`;
   // progress
-  const total = ITEMS.length, doneN = ITEMS.filter(isDone).length;
-  document.getElementById('fill').style.width = total ? (100*doneN/total)+'%' : '0%';
-  document.getElementById('prog').textContent = `${doneN} of ${total} bought`;
+  const visible = ITEMS.filter(i => !hidden[i.id] || OWNER);
+  const total = visible.length, doneN = visible.filter(isDone).length;
+  const pct = total ? (100*doneN/total)+'%' : '0%', label = `${doneN} of ${total} items complete`;
+  ['fill','fill2'].forEach(id => { document.getElementById(id).style.width = pct; });
+  ['prog','prog2'].forEach(id => { document.getElementById(id).textContent = label; });
   document.getElementById('offline').hidden = online;
   document.getElementById('sync').textContent = lastSync ? 'Last synced ' + lastSync.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + (OWNER?' · owner mode':'') : 'Not synced yet';
   if(openForm){ const f = document.getElementById('name-'+openForm); if(f && !quiet) f.focus(); }
@@ -361,6 +383,8 @@ document.getElementById('main').addEventListener('click', async e => {
   if(e.target.closest('[data-cancel]')){ openForm = null; render(); return; }
   const undo = e.target.closest('[data-undo]');
   if(undo){
+    // Two-step so a stray tap doesn't un-buy something.
+    if(undo.dataset.armed!=='1'){ undo.dataset.armed='1'; undo.textContent='Really remove?'; setTimeout(()=>{ if(undo.isConnected){ undo.dataset.armed=''; undo.textContent = undo.dataset.label; } }, 4000); return; }
     undo.disabled = true;
     try{ await removeClaim(undo.dataset.undo, undo.dataset.cid); toast('Removed. The item is open again.'); }
     catch(err){ online=false; toast("Couldn't save — check your connection and try again."); }
@@ -391,6 +415,7 @@ document.getElementById('main').addEventListener('submit', async e => {
     toast(ok ? `Thank you, ${name}! Marked as bought.` : 'Someone just bought this one — it was marked moments ago.');
   }catch(err2){ online=false; err.textContent = "Couldn't save. Check your connection and try again."; err.hidden=false; form.querySelector('[type=submit]').disabled=false; return; }
   await sync(true);
+  const card = document.getElementById('item-'+id); const f2 = card && card.querySelector('.status .x, .btn, .links a'); if(f2) f2.focus({preventScroll:true});
 });
 document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim().toLowerCase(); render(true); });
 document.getElementById('hideDone').addEventListener('change', e => { filter.hideDone = e.target.checked; render(true); });
