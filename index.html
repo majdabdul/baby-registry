@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Baby Registry · Asma & Majd</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23B8536B'/%3E%3Ccircle cx='16' cy='14' r='6' fill='%23fff'/%3E%3C/svg%3E">
+<script src="data.js"></script>
+<style>
+/* Layout: one quiet column (max 980px); sticky filter bar; items as a card grid that drops to one column on phones. */
+:root{
+  --bg:#FBF8F6; --fg:#2A2730; --muted:#766E78; --card:#FFFFFF; --line:#E8DFE1;
+  --accent:#B8536B; --accent-ink:#8F3B50; --accent-soft:#F7E6EA;
+  --good:#2F7D4F; --good-soft:#E3F2E8; --warn-soft:#FFF4D6; --warn-ink:#7A5A00;
+  --display:'Instrument Serif',Georgia,'Times New Roman',serif;
+  --body:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --radius:14px; --shadow:0 1px 2px rgba(42,39,48,.06),0 8px 24px -12px rgba(42,39,48,.18);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1B181D; --fg:#F1ECEE; --muted:#A89FA6; --card:#252028; --line:#36303A;
+  --accent:#E58CA3; --accent-ink:#F3B3C3; --accent-soft:#3A2630;
+  --good:#7FCB98; --good-soft:#1F3527; --warn-soft:#3A3220; --warn-ink:#F0D48A; color-scheme:dark;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}}
+:root[data-theme="dark"]{
+  --bg:#1B181D; --fg:#F1ECEE; --muted:#A89FA6; --card:#252028; --line:#36303A;
+  --accent:#E58CA3; --accent-ink:#F3B3C3; --accent-soft:#3A2630;
+  --good:#7FCB98; --good-soft:#1F3527; --warn-soft:#3A3220; --warn-ink:#F0D48A; color-scheme:dark;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent-ink)}
+button{font:inherit;color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
+
+/* Header */
+.hero{padding-block:40px 24px;display:grid;gap:14px}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,7vw,64px);line-height:1.02;letter-spacing:-.01em}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero p{max-width:62ch;margin:0;color:var(--muted);font-size:17px}
+.howto{display:grid;gap:10px;grid-template-columns:repeat(3,1fr);margin-top:6px}
+.howto div{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:14.5px}
+.howto b{display:block;color:var(--fg);font-weight:600;margin-bottom:2px}
+@media (max-width:700px){.howto{grid-template-columns:1fr}}
+
+/* Address */
+.address{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);border-radius:var(--radius);padding:18px 20px;display:grid;gap:12px;margin-block:8px 28px}
+.address .lines{display:grid;gap:8px}
+.address .row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.address .val{font-size:18px;font-weight:600;letter-spacing:.01em;user-select:all;min-width:0}
+.address .val.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:20px;letter-spacing:.08em}
+.address .lbl{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
+.address .ar{font-size:13px;color:var(--muted)}
+.copy{border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);background:var(--card);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
+.copy:hover{border-color:var(--accent)}
+.copy:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* Toolbar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line);padding-block:10px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.bar .wrap{display:grid;gap:10px}
+.bar .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.search input{border:0;background:transparent;flex:1;min-width:0;font-size:15px;outline:none;color:inherit}
+.search svg{flex:none;opacity:.6}
+.toggle{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;cursor:pointer;user-select:none;white-space:nowrap}
+.toggle input{accent-color:var(--accent);width:18px;height:18px;margin:0}
+.progress{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);white-space:nowrap}
+.progress .track{width:110px;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
+.progress .fill{height:100%;background:var(--good);width:0%;transition:width .4s}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-size:13.5px;font-weight:500;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+
+/* Sections */
+main{padding-block:12px 60px;display:grid;gap:34px}
+section h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+section h2 small{font-family:var(--body);font-size:13px;color:var(--muted);letter-spacing:.04em}
+section .blurb{color:var(--muted);font-size:14.5px;margin:6px 0 0;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin-top:16px}
+@media (max-width:640px){.grid{grid-template-columns:1fr}}
+
+/* Item card */
+.item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;display:grid;grid-template-rows:auto auto 1fr;gap:12px;min-width:0;position:relative;box-shadow:var(--shadow)}
+.item .foot{align-self:end}
+.item.done{opacity:.72;box-shadow:none}
+.item .head{display:flex;gap:12px;align-items:flex-start}
+.item .thumb{flex:none;width:72px;height:72px;border-radius:10px;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
+.item .thumb img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
+:root[data-theme="dark"] .item .thumb img{mix-blend-mode:normal;background:#fff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .item .thumb img{mix-blend-mode:normal;background:#fff}}
+.item .thumb svg{width:34px;height:34px;opacity:.5}
+.item .ttl{min-width:0;flex:1}
+.item h3{font-size:16.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+.item .meta{font-size:13.5px;color:var(--muted);margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.store{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--fg)}
+.item .note{font-size:13.5px;line-height:1.45;color:var(--fg);background:var(--bg);border-radius:9px;padding:8px 10px}
+.item .note.cotton{background:var(--warn-soft);color:var(--warn-ink)}
+.item .foot{display:grid;gap:10px}
+.item .price{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.item .price b{font-size:17px;font-weight:600;white-space:nowrap}
+.item .price span{font-size:13px;color:var(--muted);text-align:right;min-width:0}
+.links{display:flex;flex-wrap:wrap;gap:6px}
+.links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--fg);background:var(--card)}
+.links a:hover{border-color:var(--accent);color:var(--accent-ink)}
+.links a.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.links a.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.claim{display:grid;gap:8px}
+.btn{border:0;border-radius:10px;padding:11px 14px;font-weight:600;font-size:15px;cursor:pointer;background:var(--accent);color:#fff;width:100%}
+.btn:hover{background:var(--accent-ink)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent-ink);background:transparent}
+.btn[disabled]{opacity:.6;cursor:default}
+.status{display:flex;gap:8px;align-items:center;font-size:13.5px;padding:8px 10px;border-radius:9px;background:var(--good-soft);color:var(--good);font-weight:600}
+.status svg{flex:none}
+.status .who{font-weight:500;color:var(--fg);min-width:0;overflow-wrap:anywhere}
+.status .x{margin-left:auto;border:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:6px;white-space:nowrap}
+.status .x:hover{color:var(--accent-ink);background:var(--card)}
+.ribbon{position:absolute;top:12px;right:12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--good);color:#fff;padding:3px 8px;border-radius:999px}
+
+/* Claim form (inline) */
+.form{display:grid;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
+.form label{font-size:12.5px;font-weight:600;color:var(--muted);display:grid;gap:4px}
+.form input,.form select{font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;min-width:0}
+.form .actions{display:flex;gap:8px}
+.form .actions .btn{padding:9px 12px;font-size:14px}
+.form .err{font-size:13px;color:var(--accent-ink)}
+
+/* Toast + misc */
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:500;box-shadow:var(--shadow);z-index:50;max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s}
+.toast[hidden]{display:none}
+.empty{color:var(--muted);font-size:15px;padding:30px 0;text-align:center}
+.offline{background:var(--warn-soft);color:var(--warn-ink);border-radius:10px;padding:10px 14px;font-size:14px}
+footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--muted);font-size:13.5px;display:grid;gap:6px}
+footer .sync{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="wrap hero">
+  <span class="eyebrow">Baby registry</span>
+  <h1 id="title">A little one is <em>on the way</em></h1>
+  <p id="intro">Thank you for thinking of us. Everything below is what we're hoping to have ready before the baby arrives. Pick anything you like, buy it wherever is easiest for you, and tap <strong>“I bought this”</strong> so nobody ends up buying the same thing twice.</p>
+  <div class="howto">
+    <div><b>1 · Pick an item</b>Use the links on each card, or buy it anywhere you prefer.</div>
+    <div><b>2 · Mark it bought</b>Tap “I bought this” and leave your name. It updates for everyone instantly.</div>
+    <div><b>3 · Send it to us</b>Deliver to the address below, or bring it along when you visit.</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="address" id="address">
+    <div class="eyebrow">Delivery address · عنوان التوصيل</div>
+    <div class="lines">
+      <div class="row">
+        <div>
+          <div class="lbl">National address</div>
+          <div class="val" id="addrFull">7362, No. 469, Al Malqa, Riyadh 13524</div>
+          <div class="ar">٧٣٦٢، رقم ٤٦٩، حي الملقا، الرياض ١٣٥٢٤</div>
+        </div>
+        <button class="copy" data-copy="7362, No. 469, Al Malqa, Riyadh 13524">Copy</button>
+      </div>
+      <div class="row">
+        <div>
+          <div class="lbl">Short address · العنوان المختصر</div>
+          <div class="val mono" id="addrShort">RRMB7362</div>
+        </div>
+        <button class="copy" data-copy="RRMB7362">Copy</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="wrap">
+    <div class="top">
+      <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search items" autocomplete="off" aria-label="Search items"></label>
+      <label class="toggle"><input type="checkbox" id="hideDone"> Hide bought items</label>
+      <div class="progress"><div class="track"><div class="fill" id="fill"></div></div><span id="prog">—</span></div>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="Categories"></div>
+  </div>
+</div>
+
+<main class="wrap" id="main">
+  <div class="empty">Loading the list…</div>
+</main>
+
+<footer class="wrap">
+  <div id="offline" class="offline" hidden>Can't reach the shared list right now. You can still browse, but “I bought this” won't save until you're back online.</div>
+  <div class="sync" id="sync">Last synced: —</div>
+  <div>Questions about an item? Just message us. With love, <span id="family">Asma &amp; Majd</span>.</div>
+</footer>
+
+<div class="toast" id="toast" hidden role="status"></div>
+
+<script>
+(function(){
+'use strict';
+// ---------- Config ----------
+const FAMILY = 'Asma & Majd';
+// Shared store for "bought" marks. Swap this object to change backends (e.g. Firebase) — everything below calls only load()/save().
+const STORE = { url: 'https://api.npoint.io/6d2dc2c0eefbffddeb58' };
+const POLL_MS = 25000;
+
+const ITEMS = window.REGISTRY_ITEMS || [];
+const CATS = window.REGISTRY_CATEGORIES || [];
+document.getElementById('family').textContent = FAMILY;
+
+// ---------- Per-device identity (so you can undo your own claim) ----------
+const ls = { get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } }, set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} } };
+let dev = ls.get('reg_dev'); if(!dev){ dev = Math.random().toString(36).slice(2)+Date.now().toString(36); ls.set('reg_dev',dev); }
+let myName = ls.get('reg_name') || '';
+const OWNER = location.hash === '#owner';
+
+// ---------- State ----------
+let claims = {};       // itemId -> [{id,name,qty,at,dev}]
+let online = true, lastSync = null;
+let filter = { q:'', cat:'all', hideDone: false };
+let openForm = null;   // itemId whose claim form is open
+let savedAt = null;
+
+async function load(){
+  const r = await fetch(STORE.url + '?t=' + Date.now(), { cache:'no-store' });
+  if(!r.ok) throw new Error('load '+r.status);
+  const doc = await r.json();
+  return (doc && typeof doc==='object' && doc.claims && typeof doc.claims==='object') ? doc : { claims:{} };
+}
+async function save(doc){
+  doc.updated = Date.now();
+  const r = await fetch(STORE.url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(doc) });
+  if(!r.ok) throw new Error('save '+r.status);
+}
+async function sync(quiet){
+  try{
+    const doc = await load();
+    claims = doc.claims; online = true; lastSync = new Date();
+  }catch(e){ online = false; }
+  render(quiet);
+}
+// Read-merge-write so two people claiming different things at the same moment don't overwrite each other.
+async function mutate(fn){
+  const doc = await load();
+  fn(doc.claims);
+  await save(doc);
+  claims = doc.claims; lastSync = new Date(); online = true;
+}
+
+// ---------- Helpers ----------
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sar = n => n==null ? '' : 'SAR ' + Number(n).toLocaleString('en-US',{maximumFractionDigits:0});
+function gifted(item){ return (claims[item.id]||[]).reduce((a,c)=>a+(Number(c.qty)||1),0); }
+function need(item){ return Number(item.qty)||1; }
+function isDone(item){ return gifted(item) >= need(item); }
+function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>{t.hidden=true},2600); }
+const ICONS = {
+  check:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>',
+  box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 8 12 3l9 5-9 5-9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>'
+};
+
+// ---------- Rendering ----------
+function buildChips(){
+  const el = document.getElementById('chips');
+  const all = [{id:'all',name:'Everything'}].concat(CATS);
+  el.innerHTML = all.map(c => `<button class="chip" data-cat="${esc(c.id)}" aria-pressed="${filter.cat===c.id}">${esc(c.name)}</button>`).join('');
+  el.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { filter.cat = b.dataset.cat; buildChips(); render(); window.scrollTo({top: document.getElementById('main').offsetTop - 120, behavior:'smooth'}); }));
+}
+function matches(item){
+  if(filter.cat!=='all' && item.cat!==filter.cat) return false;
+  if(filter.hideDone && isDone(item)) return false;
+  if(filter.q){ const h = (item.name+' '+(item.brand||'')+' '+(item.store||'')+' '+(item.note||'')).toLowerCase(); if(!h.includes(filter.q)) return false; }
+  return true;
+}
+function cardHTML(item){
+  const done = isDone(item), g = gifted(item), n = need(item);
+  const cs = claims[item.id] || [];
+  const thumb = item.img ? `<img src="${esc(item.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ICONS.box;
+  const links = [];
+  if(item.url) links.push(`<a class="primary" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.store ? 'Buy at '+item.store : 'View item')}</a>`);
+  (item.alt||[]).forEach(a => links.push(`<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)}</a>`));
+  const statusRows = cs.map(c => {
+    const mine = c.dev===dev;
+    const canRemove = mine || OWNER;
+    return `<div class="status">${ICONS.check}<span class="who">${esc(c.name||'Someone')}${n>1?` · ${c.qty||1}`:''}</span>${canRemove?`<button class="x" data-undo="${esc(item.id)}" data-cid="${esc(c.id)}">${mine?'Undo':'Remove'}</button>`:''}</div>`;
+  }).join('');
+  let action = '';
+  if(openForm===item.id){
+    action = `<form class="form" data-form="${esc(item.id)}">
+      <label>Your name<input id="name-${esc(item.id)}" name="name" value="${esc(myName)}" placeholder="So we know who to thank" required maxlength="40" autocomplete="name"></label>
+      ${n-g>1?`<label>How many did you buy?<select id="qty-${esc(item.id)}" name="qty">${Array.from({length:n-g},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join('')}</select></label>`:''}
+      <div class="err" hidden></div>
+      <div class="actions"><button class="btn" type="submit">Confirm</button><button class="btn ghost" type="button" data-cancel="1">Cancel</button></div>
+    </form>`;
+  } else if(!done){
+    action = `<button class="btn" data-claim="${esc(item.id)}">I bought this${n>1?` (${n-g} still needed)`:''}</button>`;
+  }
+  const priceTxt = item.price!=null ? `<b>${sar(item.price)}</b><span>${item.priceNote?esc(item.priceNote):'approx.'}</span>` : `<b>${esc(item.priceNote||'')}</b><span></span>`;
+  return `<article class="item${done?' done':''}" id="item-${esc(item.id)}">
+    ${done?'<span class="ribbon">Bought</span>':''}
+    <div class="head"><div class="thumb">${thumb}</div><div class="ttl"><h3>${esc(item.name)}</h3><div class="meta">${item.brand && item.brand!==item.store?`<span>${esc(item.brand)}</span>`:''}${item.store?`<span class="store">${esc(item.store)}</span>`:''}${n>1?`<span>Need ${n}${g?` · ${g} bought`:''}</span>`:''}</div></div></div>
+    ${item.note?`<div class="note${item.cotton?' cotton':''}">${esc(item.note)}</div>`:''}
+    <div class="foot">
+      <div class="price">${priceTxt}</div>
+      ${links.length?`<div class="links">${links.join('')}</div>`:''}
+      <div class="claim">${statusRows}${action}</div>
+    </div>
+  </article>`;
+}
+function render(quiet){
+  const main = document.getElementById('main');
+  const html = [];
+  let shown = 0;
+  CATS.forEach(c => {
+    const items = ITEMS.filter(i => i.cat===c.id && matches(i));
+    if(!items.length) return;
+    shown += items.length;
+    html.push(`<section id="cat-${esc(c.id)}"><h2>${esc(c.name)}<small>${items.length} item${items.length===1?'':'s'}</small></h2>${c.blurb?`<p class="blurb">${esc(c.blurb)}</p>`:''}<div class="grid">${items.map(cardHTML).join('')}</div></section>`);
+  });
+  main.innerHTML = shown ? html.join('') : `<div class="empty">Nothing matches that. Try another word or category.</div>`;
+  // progress
+  const total = ITEMS.length, doneN = ITEMS.filter(isDone).length;
+  document.getElementById('fill').style.width = total ? (100*doneN/total)+'%' : '0%';
+  document.getElementById('prog').textContent = `${doneN} of ${total} bought`;
+  document.getElementById('offline').hidden = online;
+  document.getElementById('sync').textContent = lastSync ? 'Last synced ' + lastSync.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + (OWNER?' · owner mode':'') : 'Not synced yet';
+  if(openForm){ const f = document.getElementById('name-'+openForm); if(f && !quiet) f.focus(); }
+}
+
+// ---------- Events ----------
+document.getElementById('main').addEventListener('click', async e => {
+  const claimBtn = e.target.closest('[data-claim]');
+  if(claimBtn){ openForm = claimBtn.dataset.claim; render(); return; }
+  if(e.target.closest('[data-cancel]')){ openForm = null; render(); return; }
+  const undo = e.target.closest('[data-undo]');
+  if(undo){
+    undo.disabled = true;
+    try{
+      await mutate(c => { const list = c[undo.dataset.undo]||[]; c[undo.dataset.undo] = list.filter(x => x.id!==undo.dataset.cid && !(x.dev===dev && !x.id)); if(!c[undo.dataset.undo].length) delete c[undo.dataset.undo]; });
+      toast('Removed. The item is open again.');
+    }catch(err){ online=false; toast("Couldn't save — check your connection and try again."); }
+    render(true);
+  }
+});
+document.getElementById('main').addEventListener('submit', async e => {
+  const form = e.target.closest('[data-form]'); if(!form) return;
+  e.preventDefault();
+  const id = form.dataset.form;
+  const name = form.name.value.trim();
+  const err = form.querySelector('.err');
+  if(!name){ err.textContent = 'Please add your name so we can thank you.'; err.hidden=false; return; }
+  const qty = form.qty ? Number(form.qty.value) : 1;
+  myName = name; ls.set('reg_name', name);
+  form.querySelector('[type=submit]').disabled = true;
+  try{
+    const item = ITEMS.find(i=>i.id===id);
+    let clash = false;
+    await mutate(c => {
+      const list = c[id] || [];
+      const already = list.reduce((a,x)=>a+(Number(x.qty)||1),0);
+      if(already >= need(item)){ clash = true; return; }
+      list.push({ id: Math.random().toString(36).slice(2,10), name, qty: Math.min(qty, need(item)-already), at: new Date().toISOString(), dev });
+      c[id] = list;
+    });
+    openForm = null;
+    toast(clash ? 'Someone just bought this one — it was marked moments ago.' : `Thank you, ${name}! Marked as bought.`);
+  }catch(err2){ online=false; err.textContent = "Couldn't save. Check your connection and try again."; err.hidden=false; form.querySelector('[type=submit]').disabled=false; return; }
+  render(true);
+});
+document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim().toLowerCase(); render(true); });
+document.getElementById('hideDone').addEventListener('change', e => { filter.hideDone = e.target.checked; render(true); });
+document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+  const txt = b.dataset.copy;
+  try{ await navigator.clipboard.writeText(txt); toast('Copied: '+txt); }
+  catch(e){ const el = b.parentElement.querySelector('.val'); const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast('Select and copy the highlighted text'); }
+}));
+document.addEventListener('visibilitychange', () => { if(document.visibilityState==='visible') sync(true); });
+
+// ---------- Boot ----------
+buildChips();
+render(true);
+sync(true);
+setInterval(() => { if(document.visibilityState==='visible' && !openForm) sync(true); }, POLL_MS);
+})();
+</script>
+</body>
+</html>
