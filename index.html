@@ -161,8 +161,8 @@ footer .sync{font-variant-numeric:tabular-nums}
 
 <header class="wrap hero">
   <span class="eyebrow">Majd’s baby registry</span>
-  <h1 id="title">A little one is <em>on the way</em></h1>
-  <p id="intro">Thank you for thinking of us. Everything below is what we're hoping to have ready before the baby arrives. Pick anything you like, buy it wherever is easiest for you, and tap <strong>“I bought this”</strong> so nobody ends up buying the same thing twice.</p>
+  <h1 id="title">A little girl is <em>on the way</em></h1>
+  <p id="intro">Thank you for thinking of us. Everything below is what we're hoping to have ready before she arrives. Pick anything you like, buy it wherever is easiest for you, and tap <strong>“I bought this”</strong> so nobody ends up buying the same thing twice.</p>
   <div class="howto">
     <div><b>1 · Pick an item</b>Use the links on each card, or buy it anywhere you prefer.</div>
     <div><b>2 · Mark it bought</b>Tap “I bought this” and leave your name. Everyone else sees it within a minute.</div>
@@ -291,6 +291,7 @@ const ICONS = {
   check:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>',
   box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 8 12 3l9 5-9 5-9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>'
 };
+window.__ICON_BOX = ICONS.box;
 
 // ---------- Rendering ----------
 function buildChips(){
@@ -319,7 +320,8 @@ function lev(a, b){
 function cardHTML(item){
   const done = isDone(item), g = gifted(item), n = need(item);
   const cs = claims[item.id] || [];
-  const thumb = item.img ? `<img src="${esc(item.img)}" alt="" loading="lazy" referrerpolicy="no-referrer">` : ICONS.box;
+  // Pictures are stored in img/<id>.jpg (see tools/fetch_images.py); fall back to the retailer URL, then to an icon.
+  const thumb = item.img ? `<img src="img/${esc(item.id)}.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" data-fallback="${esc(item.img)}" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.replaceWith(document.createRange().createContextualFragment(window.__ICON_BOX))}">` : ICONS.box;
   const links = [];
   if(item.url) links.push(`<a class="primary" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.store ? 'Buy at '+item.store : 'View item')}</a>`);
   if((item.alt||[]).length) links.push('<span class="or">or</span>');
