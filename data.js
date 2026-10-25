@@ -122,3 +122,9 @@ window.REGISTRY_ITEMS = [
   { id:'pj-seersucker', cat:'mama', name:'Petite seersucker cotton pyjama set', brand:'Pintage', store:'Amazon.sa', qty:1, price:147, url:AMZ('B0GWR5XFG3'), img:AIMG('31yxT8MfXyL') },
   { id:'pj-pajamagram', cat:'mama', name:'Winter pyjamas, novelty print', brand:'PajamaGram', store:'Amazon.sa', qty:1, price:287, url:AMZ('B07P7X4NYQ'), img:AIMG('41CEbGMcBKL') },
 ];
+
+// ---- Tags ----
+// Essentials: the things we'd need from day one. Group gifts: pricey items guests can chip in on together.
+const ESSENTIALS = ['onesies-first','sleepers-first','swaddles-muslin','sleeping-bag','next2me','sheets-next2me','diapers-nb','diapers-1','wipes','diaper-cream','changing-pad','bottles','sterilizer','burp-cloths','bathtub','towels','healthcare-kit','nail-clippers','car-seat','yoyo-0'];
+const GROUP_GIFTS = ['next2me','diaper-bag','yoyo-0','mamaroo','dresser','ubuy-item','pump-spectra','pump-eufy','car-seat','sound-machine'];
+window.REGISTRY_ITEMS.forEach(i => { if (ESSENTIALS.includes(i.id)) i.essential = true; if (GROUP_GIFTS.includes(i.id) && i.price) i.group = true; });

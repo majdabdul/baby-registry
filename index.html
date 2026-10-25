@@ -7,34 +7,40 @@
 <title>Baby Registry · Majd</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23B8536B'/%3E%3Ccircle cx='16' cy='14' r='6' fill='%23fff'/%3E%3C/svg%3E">
 <script src="data.js"></script>
+<script src="ar.js"></script>
 <style>
-/* Layout: one quiet column (max 980px); sticky filter bar; items as a card grid that drops to one column on phones. */
+/* Layout: one quiet column (max 980px); sticky filter bar; picture-led cards in a grid that drops to one column on phones. */
 :root{
   --bg:#FBF8F6; --fg:#2A2730; --muted:#766E78; --card:#FFFFFF; --line:#E8DFE1;
-  --accent:#B8536B; --accent-ink:#8F3B50; --accent-soft:#F7E6EA;
+  --accent:#B8536B; --accent-ink:#8F3B50; --accent-soft:#F7E6EA; --blush:#F3DDE2;
   --good:#2F7D4F; --good-soft:#E3F2E8; --warn-soft:#FFF4D6; --warn-ink:#7A5A00;
   --display:'Instrument Serif',Georgia,'Times New Roman',serif;
   --body:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --arabic:'IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
   --radius:14px; --shadow:0 1px 2px rgba(42,39,48,.06),0 8px 24px -12px rgba(42,39,48,.18);
 }
 @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
   --bg:#1B181D; --fg:#F1ECEE; --muted:#A89FA6; --card:#252028; --line:#36303A;
-  --accent:#E58CA3; --accent-ink:#F3B3C3; --accent-soft:#3A2630;
+  --accent:#E58CA3; --accent-ink:#F3B3C3; --accent-soft:#3A2630; --blush:#2E2128;
   --good:#7FCB98; --good-soft:#1F3527; --warn-soft:#3A3220; --warn-ink:#F0D48A; color-scheme:dark;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
 }}
 :root[data-theme="dark"]{
   --bg:#1B181D; --fg:#F1ECEE; --muted:#A89FA6; --card:#252028; --line:#36303A;
-  --accent:#E58CA3; --accent-ink:#F3B3C3; --accent-soft:#3A2630;
+  --accent:#E58CA3; --accent-ink:#F3B3C3; --accent-soft:#3A2630; --blush:#2E2128;
   --good:#7FCB98; --good-soft:#1F3527; --warn-soft:#3A3220; --warn-ink:#F0D48A; color-scheme:dark;
   --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px -12px rgba(0,0,0,.5);
 }
 *{box-sizing:border-box}
 html,body{margin:0}
 body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+html[lang="ar"] body{font-family:var(--arabic)}
+html[lang="ar"] .hero h1,html[lang="ar"] section h2,html[lang="ar"] .panel h2{font-family:var(--arabic);font-weight:700;letter-spacing:0}
+html[lang="ar"] .hero h1{font-size:clamp(34px,6vw,54px);line-height:1.2}
+html[lang="ar"] .eyebrow,html[lang="ar"] .lbl,html[lang="ar"] .ribbon,html[lang="ar"] .tag{letter-spacing:0}
 a{color:var(--accent-ink)}
 button{font:inherit;color:inherit}
 .wrap{max-width:980px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -42,7 +48,11 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600}
 
 /* Header */
-.hero{padding-block:40px 24px;display:grid;gap:14px}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:18px}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.lang button{border:0;background:transparent;padding:6px 12px;font-size:13.5px;font-weight:600;cursor:pointer;color:var(--muted)}
+.lang button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.hero{padding-block:18px 24px;display:grid;gap:14px}
 .hero h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,7vw,64px);line-height:1.02;letter-spacing:-.01em}
 .hero h1 em{font-style:italic;color:var(--accent)}
 .hero p{max-width:62ch;margin:0;color:var(--muted);font-size:17px}
@@ -50,6 +60,9 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .howto div{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;font-size:14.5px}
 .howto b{display:block;color:var(--fg);font-weight:600;margin-bottom:2px}
 @media (max-width:700px){.howto{grid-template-columns:1fr}}
+.share{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:600;text-decoration:none;color:var(--fg);width:max-content}
+.share:hover{border-color:var(--accent);color:var(--accent-ink)}
+.share svg{width:18px;height:18px}
 
 /* Address */
 .address{background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 25%,transparent);border-radius:var(--radius);padding:18px 20px;display:grid;gap:12px;margin-block:8px 28px}
@@ -61,24 +74,26 @@ h1,h2,h3{text-wrap:balance;margin:0}
 .address .ar{font-size:13px;color:var(--muted)}
 .copy{border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);background:var(--card);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap}
 .copy:hover{border-color:var(--accent)}
-.copy:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.copy:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 
 /* Toolbar */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.2) blur(10px);-webkit-backdrop-filter:saturate(1.2) blur(10px);border-bottom:1px solid var(--line);padding-block:10px}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
 .bar .wrap{display:grid;gap:10px}
 .bar .top{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.search{flex:1 1 220px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
-.search input{border:0;background:transparent;flex:1;min-width:0;font-size:15px;outline:none;color:inherit}
+.search{flex:1 1 200px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.search input{border:0;background:transparent;flex:1;min-width:0;font-size:15px;outline:none;color:inherit;font-family:inherit}
 .search svg{flex:none;opacity:.6}
 .toggle{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;cursor:pointer;user-select:none;white-space:nowrap}
 .toggle input{accent-color:var(--accent);width:18px;height:18px;margin:0}
+.pricesel{font:inherit;font-size:14px;font-weight:500;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer}
 .progress{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--muted);white-space:nowrap}
 .progress .track{width:110px;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
 .progress .fill{height:100%;background:var(--good);width:0%;transition:width .4s}
 .chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;-webkit-overflow-scrolling:touch;mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent);-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 48px),transparent);padding-right:48px}
+[dir="rtl"] .chips{mask-image:linear-gradient(to left,#000 calc(100% - 48px),transparent);-webkit-mask-image:linear-gradient(to left,#000 calc(100% - 48px),transparent);padding-right:0;padding-left:48px}
 .chips::-webkit-scrollbar{display:none}
-@media (min-width:701px){.chips{flex-wrap:wrap;overflow:visible;mask-image:none;-webkit-mask-image:none;padding-right:0}}
+@media (min-width:701px){.chips{flex-wrap:wrap;overflow:visible;mask-image:none;-webkit-mask-image:none;padding-right:0;padding-left:0}}
 @media (max-width:640px){.bar .progress{display:none}}
 .heroprog{display:none;align-items:center;gap:10px;font-size:13.5px;color:var(--muted)}
 .heroprog .track{flex:1;height:6px;border-radius:999px;background:var(--line);overflow:hidden}
@@ -86,11 +101,14 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 @media (max-width:640px){.heroprog{display:flex}}
 .chip{flex:none;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-size:13.5px;font-weight:500;cursor:pointer;white-space:nowrap}
 .chip[aria-pressed="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.chip.star{border-color:color-mix(in srgb,var(--accent) 50%,transparent);color:var(--accent-ink)}
+.chip.star[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
 
 /* Sections */
 main{padding-block:12px 60px;display:grid;gap:34px}
 section h2{font-family:var(--display);font-weight:400;font-size:30px;line-height:1.1;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
 section h2 small{font-family:var(--body);font-size:13px;color:var(--muted);letter-spacing:.04em}
+html[lang="ar"] section h2 small{font-family:var(--arabic)}
 section .blurb{color:var(--muted);font-size:14.5px;margin:6px 0 0;max-width:70ch}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px;margin-top:16px}
 @media (max-width:640px){.grid{grid-template-columns:1fr}}
@@ -100,55 +118,77 @@ section .blurb{color:var(--muted);font-size:14.5px;margin:6px 0 0;max-width:70ch
 .item .foot{align-self:end}
 .item.done{opacity:.72;box-shadow:none}
 .item .head{display:flex;gap:12px;align-items:flex-start}
-.item .thumb{flex:none;width:72px;height:72px;border-radius:10px;background:var(--bg);border:1px solid var(--line);display:grid;place-items:center;overflow:hidden}
-.item .thumb img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply}
-:root[data-theme="dark"] .item .thumb img{mix-blend-mode:normal;background:#fff}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .item .thumb img{mix-blend-mode:normal;background:#fff}}
-.item .thumb svg{width:34px;height:34px;opacity:.5}
+.item .thumb{flex:none;width:96px;height:96px;border-radius:12px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;overflow:hidden;padding:0;cursor:zoom-in}
+.item .thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.item .thumb svg{width:34px;height:34px;opacity:.5;color:var(--muted)}
 .item .ttl{min-width:0;flex:1}
 .item h3{font-size:16.5px;font-weight:600;line-height:1.3;overflow-wrap:anywhere}
-.item .meta{font-size:13.5px;color:var(--muted);margin-top:3px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.item.done .ttl h3,.item.hiddenitem .ttl h3{padding-inline-end:72px}
+.item .meta{font-size:13.5px;color:var(--muted);margin-top:4px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
 .store{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--fg)}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent-ink)}
 .item .note{font-size:13.5px;line-height:1.45;color:var(--fg);background:var(--bg);border-radius:9px;padding:8px 10px}
 .item .note.cotton{background:var(--warn-soft);color:var(--warn-ink)}
 .item .foot{display:grid;gap:10px}
 .item .price{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
 .item .price b{font-size:17px;font-weight:600;white-space:nowrap}
-.item .price span{font-size:13px;color:var(--muted);text-align:right;min-width:0}
+.item .price span{font-size:13px;color:var(--muted);text-align:end;min-width:0}
 .links{display:flex;flex-wrap:wrap;gap:6px}
 .links a{font-size:13.5px;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--fg);background:var(--card)}
 .links a:hover{border-color:var(--accent);color:var(--accent-ink)}
 .links a.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
 .links a.primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.links .or{font-size:12.5px;color:var(--muted);align-self:center}
 .claim{display:grid;gap:8px}
 .btn{border:0;border-radius:10px;padding:11px 14px;font-weight:600;font-size:15px;cursor:pointer;background:var(--accent);color:#fff;width:100%}
 .btn:hover{background:var(--accent-ink)}
 .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg)}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent-ink);background:transparent}
+.btn.small{padding:8px 10px;font-size:13.5px}
 .btn[disabled]{opacity:.6;cursor:default}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .status{display:flex;gap:8px;align-items:center;font-size:13.5px;padding:8px 10px;border-radius:9px;background:var(--good-soft);color:var(--good);font-weight:600}
 .status svg{flex:none}
 .status .who{font-weight:500;color:var(--fg);min-width:0;overflow-wrap:anywhere}
-.status .x{margin-left:auto;border:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:6px;white-space:nowrap}
+.status .x{margin-inline-start:auto;border:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:6px;white-space:nowrap}
 .status .x:hover{color:var(--accent-ink);background:var(--card)}
-.ribbon{position:absolute;top:12px;right:12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--good);color:#fff;padding:3px 8px;border-radius:999px}
+.ribbon{position:absolute;top:12px;inset-inline-end:12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--good);color:#fff;padding:3px 8px;border-radius:999px}
 .ribbon.muted{background:var(--muted)}
-.item.done .ttl h3,.item.hiddenitem .ttl h3{padding-right:72px}
-.links .or{font-size:12.5px;color:var(--muted);align-self:center}
 .item.hiddenitem{opacity:.55;border-style:dashed}
-.btn.small{padding:7px 10px;font-size:13px}
-#ownerBar{background:var(--accent-soft);color:var(--fg);border-radius:10px;padding:10px 14px}
+.pledge{display:grid;gap:6px;font-size:13px;color:var(--muted)}
+.pledge .track{height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+.pledge .fill{height:100%;background:var(--accent);transition:width .4s}
+.pledge b{color:var(--fg);font-variant-numeric:tabular-nums}
 
 /* Claim form (inline) */
 .form{display:grid;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
 .form label{font-size:12.5px;font-weight:600;color:var(--muted);display:grid;gap:4px}
-.form input,.form select{font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;min-width:0}
+.form input,.form select,.form textarea{font:inherit;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:8px;padding:9px 10px;width:100%;min-width:0}
+.form textarea{resize:vertical;min-height:52px}
 .form .actions{display:flex;gap:8px}
 .form .actions .btn{padding:9px 12px;font-size:14px}
 .form .err{font-size:13px;color:var(--accent-ink)}
+.form .amt{display:flex;gap:6px;flex-wrap:wrap}
+.form .amt button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:4px 10px;font-size:13px;cursor:pointer}
+.form .amt button:hover{border-color:var(--accent)}
 
-/* Toast + misc */
-.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:500;box-shadow:var(--shadow);z-index:50;max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s}
+/* Owner panel */
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:grid;gap:10px}
+.panel h2{font-family:var(--display);font-weight:400;font-size:26px}
+.panel table{width:100%;border-collapse:collapse;font-size:14px}
+.panel th,.panel td{text-align:start;padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+.panel th{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.panel .tbl{overflow-x:auto}
+.panel .msg{color:var(--muted);font-style:italic}
+#ownerBar{background:var(--accent-soft);color:var(--fg);border-radius:10px;padding:10px 14px}
+
+/* Lightbox, toast, misc */
+.lightbox{position:fixed;inset:0;background:rgba(20,15,18,.78);z-index:60;display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lightbox[hidden]{display:none}
+.lightbox figure{margin:0;max-width:min(92vw,560px);background:#fff;border-radius:16px;padding:12px;display:grid;gap:8px;cursor:default}
+.lightbox img{width:100%;max-height:70vh;object-fit:contain;display:block;border-radius:10px}
+.lightbox figcaption{font-size:14px;font-weight:600;color:#2A2730;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;font-weight:500;box-shadow:var(--shadow);z-index:70;max-width:calc(100vw - 32px);text-align:center;transition:opacity .3s}
 .toast[hidden]{display:none}
 .empty{color:var(--muted);font-size:15px;padding:30px 0;text-align:center}
 .offline{background:var(--warn-soft);color:var(--warn-ink);border-radius:10px;padding:10px 14px;font-size:14px}
@@ -159,15 +199,20 @@ footer .sync{font-variant-numeric:tabular-nums}
 </head>
 <body>
 
+<div class="wrap topline">
+  <span class="eyebrow" data-i18n="eyebrow">Majd’s baby registry</span>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">English</button><button type="button" data-lang="ar" aria-pressed="false">العربية</button></div>
+</div>
+
 <header class="wrap hero">
-  <span class="eyebrow">Majd’s baby registry</span>
-  <h1 id="title">A little girl is <em>on the way</em></h1>
-  <p id="intro">Thank you for thinking of us. Everything below is what we're hoping to have ready before she arrives. Pick anything you like, buy it wherever is easiest for you, and tap <strong>“I bought this”</strong> so nobody ends up buying the same thing twice.</p>
+  <h1 id="title"><span data-i18n="h1a">A little girl is</span> <em data-i18n="h1b">on the way</em></h1>
+  <p id="intro" data-i18n="intro">Thank you for thinking of us. Everything below is what we're hoping to have ready before she arrives. Pick anything you like, buy it wherever is easiest for you, and tap “I bought this” so nobody ends up buying the same thing twice.</p>
   <div class="howto">
-    <div><b>1 · Pick an item</b>Use the links on each card, or buy it anywhere you prefer.</div>
-    <div><b>2 · Mark it bought</b>Tap “I bought this” and leave your name. Everyone else sees it within a minute.</div>
-    <div><b>3 · Send it to us</b>Deliver to the address below, or bring it along when you visit.</div>
+    <div><b data-i18n="s1t">1 · Pick a gift</b><span data-i18n="s1">Use the links on each card, or buy it anywhere you prefer. Big-ticket items let several people chip in.</span></div>
+    <div><b data-i18n="s2t">2 · Mark it bought</b><span data-i18n="s2">Tap “I bought this” and leave your name. Everyone else sees it within a minute.</span></div>
+    <div><b data-i18n="s3t">3 · Send it to us</b><span data-i18n="s3">Deliver to the address below, or bring it along when you visit.</span></div>
   </div>
+  <a class="share" id="shareBtn" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.7-1.7c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 12 12 0 0 0 4.6 4 5.4 5.4 0 0 0 3.2.7 2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span data-i18n="share">Share on WhatsApp</span></a>
 </header>
 
 <div class="wrap">
@@ -177,28 +222,30 @@ footer .sync{font-variant-numeric:tabular-nums}
     <div class="lines">
       <div class="row">
         <div>
-          <div class="lbl">National address</div>
+          <div class="lbl" data-i18n="natAddr">National address</div>
           <div class="val" id="addrFull">7362, No. 469, Al Malqa, Riyadh 13524</div>
           <div class="ar">٧٣٦٢، رقم ٤٦٩، حي الملقا، الرياض ١٣٥٢٤</div>
         </div>
-        <button class="copy" data-copy="7362, No. 469, Al Malqa, Riyadh 13524 — ٧٣٦٢، رقم ٤٦٩، حي الملقا، الرياض ١٣٥٢٤ — Short address: RRMB7362">Copy</button>
+        <button class="copy" data-copy="7362, No. 469, Al Malqa, Riyadh 13524 — ٧٣٦٢، رقم ٤٦٩، حي الملقا، الرياض ١٣٥٢٤ — Short address: RRMB7362" data-i18n="copy">Copy</button>
       </div>
       <div class="row">
         <div>
-          <div class="lbl">Short address · العنوان المختصر</div>
+          <div class="lbl" data-i18n="shortAddr">Short address · العنوان المختصر</div>
           <div class="val mono" id="addrShort">RRMB7362</div>
         </div>
-        <button class="copy" data-copy="RRMB7362">Copy</button>
+        <button class="copy" data-copy="RRMB7362" data-i18n="copy">Copy</button>
       </div>
     </div>
   </div>
+  <div class="panel" id="ownerPanel" hidden></div>
 </div>
 
 <div class="bar">
   <div class="wrap">
     <div class="top">
       <label class="search"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search items" autocomplete="off" aria-label="Search items"></label>
-      <label class="toggle"><input type="checkbox" id="hideDone"> Hide bought items</label>
+      <select class="pricesel" id="priceSel" aria-label="Price range"></select>
+      <label class="toggle"><input type="checkbox" id="hideDone"> <span data-i18n="hideBought">Hide bought items</span></label>
       <div class="progress"><div class="track"><div class="fill" id="fill"></div></div><span id="prog">—</span></div>
     </div>
     <div class="chips" id="chips" role="group" aria-label="Categories"></div>
@@ -206,36 +253,113 @@ footer .sync{font-variant-numeric:tabular-nums}
 </div>
 
 <main class="wrap" id="main">
-  <div class="empty">Loading the list…</div>
+  <div class="empty" data-i18n="loading">Loading the list…</div>
 </main>
 
 <footer class="wrap">
-  <div id="offline" class="offline" hidden>Can't reach the shared list right now. You can still browse, but “I bought this” won't save until you're back online.</div>
-  <div class="sync" id="sync">Last synced: —</div>
-  <div>Questions about an item? Just message me. With love, <span id="family">Majd</span>.</div>
-  <div id="ownerBar" hidden>Owner mode is on: you can hide items and remove anyone's claim. <a href="#guest" id="exitOwner">Switch back to guest view</a></div>
+  <div id="offline" class="offline" hidden data-i18n="offline">Can't reach the shared list right now. You can still browse, but “I bought this” won't save until you're back online.</div>
+  <div class="sync" id="sync">—</div>
+  <div data-i18n="footer">Questions about an item? Just message me. With love, Majd.</div>
+  <div id="ownerBar" hidden><span data-i18n="ownerBar">Owner mode is on: you can hide items and remove anyone's claim.</span> <a href="#guest" id="exitOwner" data-i18n="exitOwner">Switch back to guest view</a></div>
 </footer>
 
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true"><figure><img id="lbImg" alt=""><figcaption id="lbCap"></figcaption></figure></div>
 <div class="toast" id="toast" hidden role="status"></div>
 
 <script>
 (function(){
 'use strict';
 // ---------- Config ----------
-const FAMILY = 'Majd';
-// Shared store: Firebase Realtime Database (REST). Data lives at /claims/{itemId}/{claimId} and /hidden/{itemId}.
+// Shared store: Firebase Realtime Database (REST). /claims/{itemId}/{claimId}, /pledges/{itemId}/{pledgeId}, /hidden/{itemId}.
 const DB = 'https://baby-registry-85f68-default-rtdb.europe-west1.firebasedatabase.app';
 const POLL_MS = 15000;
+const SITE_URL = 'https://majdabdul.github.io/baby-registry/';
+
+// ---------- Language ----------
+const T = {
+  en: {
+    eyebrow:'Majd’s baby registry', h1a:'A little girl is', h1b:'on the way',
+    intro:'Thank you for thinking of us. Everything below is what we’re hoping to have ready before she arrives. Pick anything you like, buy it wherever is easiest for you, and tap “I bought this” so nobody ends up buying the same thing twice.',
+    s1t:'1 · Pick a gift', s1:'Use the links on each card, or buy it anywhere you prefer. Big-ticket items let several people chip in.',
+    s2t:'2 · Mark it bought', s2:'Tap “I bought this” and leave your name. Everyone else sees it within a minute.',
+    s3t:'3 · Send it to us', s3:'Deliver to the address below, or bring it along when you visit.',
+    share:'Share on WhatsApp', shareText:'Majd’s baby registry — a little girl is on the way! Pick a gift here: ',
+    natAddr:'National address', shortAddr:'Short address · العنوان المختصر', copy:'Copy', copied:'Copied: ', copyFallback:'Select and copy the highlighted text',
+    search:'Search items', hideBought:'Hide bought items', loading:'Loading the list…',
+    everything:'Everything', essentials:'Essentials', essential:'Essential',
+    priceAny:'Any price', priceUnder:'Under SAR 100', price100:'SAR 100–300', price300:'SAR 300–800', price800:'SAR 800+',
+    progress:(d,t)=>`${d} of ${t} items complete`, items:n=>`${n} item${n===1?'':'s'}`,
+    buyAt:s=>`Buy at ${s}`, view:'View item', or:'or', need:n=>`Need ${n}`, bought:n=>`${n} bought`,
+    iBought:'I bought this', stillNeeded:n=>` (${n} still needed)`, boughtRibbon:'Bought', hiddenRibbon:'Hidden', groupTag:'Group gift',
+    chipIn:'Chip in', boughtWhole:'I bought the whole thing', pledged:(a,p)=>`SAR ${a} of SAR ${p} pledged`, pledgedBy:'chipped in', amount:'Amount (SAR)',
+    yourName:'Your name', namePh:'So we know who to thank', howMany:'How many did you buy?', message:'A message for us (optional)', msgPh:'Mabrook! …',
+    confirm:'Confirm', cancel:'Cancel', undo:'Undo', remove:'Remove', really:'Really remove?',
+    nameErr:'Please add your name so we can thank you.', amtErr:'Please enter an amount of at least SAR 10.', saveErr:'Couldn’t save. Check your connection and try again.',
+    thanks:n=>`Thank you, ${n}! Marked as bought.`, thanksPledge:(n,a)=>`Thank you, ${n}! SAR ${a} noted.`, clash:'Someone just bought this one — it was marked moments ago.', removed:'Removed. The item is open again.',
+    hidden:'Hidden from guests.', unhidden:'Visible to guests again.', hide:'Hide from guests', unhide:'Unhide item',
+    nothing:'Nothing matches that. Try another word or category.', approx:'approx.',
+    offline:'Can’t reach the shared list right now. You can still browse, but “I bought this” won’t save until you’re back online.',
+    synced:'Last synced', notSynced:'Not synced yet', ownerMode:'owner mode',
+    footer:'Questions about an item? Just message me. With love, Majd.', ownerBar:'Owner mode is on: you can hide items and remove anyone’s claim.', exitOwner:'Switch back to guest view',
+    giftsTitle:'Gifts so far', giftsEmpty:'No gifts marked yet.', colWhen:'When', colWho:'Who', colWhat:'What', colMsg:'Message', copyList:'Copy as text', copiedList:'Gift list copied',
+    pledgeWord:a=>`chipped in SAR ${a}`, unit:'×',
+  },
+  ar: {
+    eyebrow:'سجل هدايا بيبي مجد', h1a:'بنوتة صغيرة', h1b:'في الطريق',
+    intro:'شكرًا لأنكم فكرتم فينا. كل ما تحت هو ما نتمنى تجهيزه قبل وصولها. اختاروا أي هدية تعجبكم، اشتروها من أي مكان يناسبكم، ثم اضغطوا «اشتريت هذا» حتى لا يشتري شخصان نفس الهدية.',
+    s1t:'١ · اختاروا هدية', s1:'استخدموا الروابط في كل بطاقة، أو اشتروها من أي مكان تفضلونه. الهدايا الغالية يمكن أن يشترك فيها عدة أشخاص.',
+    s2t:'٢ · علّموها كمشتراة', s2:'اضغطوا «اشتريت هذا» واكتبوا اسمكم. يراها الجميع خلال دقيقة.',
+    s3t:'٣ · أرسلوها لنا', s3:'التوصيل على العنوان أدناه، أو أحضروها معكم عند الزيارة.',
+    share:'مشاركة عبر واتساب', shareText:'سجل هدايا بيبي مجد — بنوتة صغيرة في الطريق! اختاروا هدية من هنا: ',
+    natAddr:'العنوان الوطني', shortAddr:'العنوان المختصر', copy:'نسخ', copied:'تم النسخ: ', copyFallback:'حدّدوا النص المظلل وانسخوه',
+    search:'ابحث عن هدية', hideBought:'إخفاء المشتراة', loading:'جارٍ تحميل القائمة…',
+    everything:'الكل', essentials:'الأساسيات', essential:'أساسي',
+    priceAny:'أي سعر', priceUnder:'أقل من ١٠٠ ريال', price100:'١٠٠–٣٠٠ ريال', price300:'٣٠٠–٨٠٠ ريال', price800:'أكثر من ٨٠٠ ريال',
+    progress:(d,t)=>`اكتملت ${d} من ${t} هدية`, items:n=>`${n} هدية`,
+    buyAt:s=>`اشترِ من ${s}`, view:'عرض الهدية', or:'أو', need:n=>`نحتاج ${n}`, bought:n=>`اشتُريت ${n}`,
+    iBought:'اشتريت هذا', stillNeeded:n=>` (باقي ${n})`, boughtRibbon:'تم الشراء', hiddenRibbon:'مخفي', groupTag:'هدية مشتركة',
+    chipIn:'أساهم بجزء', boughtWhole:'اشتريت الهدية كاملة', pledged:(a,p)=>`تم التعهد بـ ${a} من ${p} ريال`, pledgedBy:'ساهم', amount:'المبلغ (ريال)',
+    yourName:'اسمك', namePh:'حتى نعرف من نشكر', howMany:'كم عدد ما اشتريت؟', message:'رسالة لنا (اختياري)', msgPh:'مبروك! …',
+    confirm:'تأكيد', cancel:'إلغاء', undo:'تراجع', remove:'حذف', really:'متأكد من الحذف؟',
+    nameErr:'الرجاء كتابة اسمك حتى نشكرك.', amtErr:'الرجاء إدخال مبلغ لا يقل عن ١٠ ريال.', saveErr:'تعذّر الحفظ. تأكدوا من الاتصال وحاولوا مرة أخرى.',
+    thanks:n=>`شكرًا يا ${n}! تم تعليمها كمشتراة.`, thanksPledge:(n,a)=>`شكرًا يا ${n}! تم تسجيل ${a} ريال.`, clash:'للتو اشتراها شخص آخر قبل لحظات.', removed:'تم الحذف. الهدية متاحة من جديد.',
+    hidden:'أُخفيت عن الضيوف.', unhidden:'أصبحت ظاهرة للضيوف.', hide:'إخفاء عن الضيوف', unhide:'إظهار الهدية',
+    nothing:'لا توجد نتائج. جرّبوا كلمة أو فئة أخرى.', approx:'تقريبًا',
+    offline:'تعذّر الوصول إلى القائمة المشتركة الآن. يمكنكم التصفح، لكن «اشتريت هذا» لن يُحفظ حتى يعود الاتصال.',
+    synced:'آخر تحديث', notSynced:'لم تتم المزامنة بعد', ownerMode:'وضع المالك',
+    footer:'عندكم سؤال عن هدية؟ راسلوني. مع حبي، مجد.', ownerBar:'وضع المالك مفعّل: يمكنك إخفاء الهدايا وحذف أي تعليم.', exitOwner:'العودة إلى وضع الضيف',
+    giftsTitle:'الهدايا حتى الآن', giftsEmpty:'لم تُعلَّم أي هدية بعد.', colWhen:'متى', colWho:'من', colWhat:'ماذا', colMsg:'الرسالة', copyList:'نسخ كنص', copiedList:'تم نسخ القائمة',
+    pledgeWord:a=>`ساهم بـ ${a} ريال`, unit:'×',
+  }
+};
+const ls = { get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } }, set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} } };
+let lang = ls.get('reg_lang') || ((navigator.language||'').startsWith('ar') ? 'ar' : 'en');
+const t = k => T[lang][k];
+const AR = window.REGISTRY_AR || { items:{}, categories:{} };
+const itemName = i => (lang==='ar' && AR.items[i.id]?.name) || i.name;
+const itemNote = i => (lang==='ar' && AR.items[i.id]?.note) || i.note || '';
+const itemPriceNote = i => (lang==='ar' && AR.items[i.id]?.priceNote) || i.priceNote || '';
+const catName = c => (lang==='ar' && AR.categories[c.id]?.name) || c.name;
+const catBlurb = c => (lang==='ar' && AR.categories[c.id]?.blurb) || c.blurb || '';
+function applyLang(){
+  document.documentElement.lang = lang; document.documentElement.dir = lang==='ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i18n]').forEach(el => { const v = t(el.dataset.i18n); if(typeof v==='string') el.textContent = v; });
+  document.getElementById('q').placeholder = t('search'); document.getElementById('q').setAttribute('aria-label', t('search'));
+  document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang===lang));
+  const sel = document.getElementById('priceSel'); const cur = sel.value;
+  sel.innerHTML = [['any','priceAny'],['u100','priceUnder'],['100','price100'],['300','price300'],['800','price800']].map(([v,k]) => `<option value="${v}">${t(k)}</option>`).join('');
+  sel.value = cur || 'any';
+  document.getElementById('shareBtn').href = 'https://wa.me/?text=' + encodeURIComponent(t('shareText') + SITE_URL);
+  document.title = lang==='ar' ? 'سجل هدايا بيبي مجد' : 'Baby Registry · Majd';
+}
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => { lang = b.dataset.lang; ls.set('reg_lang', lang); applyLang(); buildChips(); render(true); }));
 
 const ITEMS = window.REGISTRY_ITEMS || [];
 const CATS = window.REGISTRY_CATEGORIES || [];
-document.getElementById('family').textContent = FAMILY;
 
 // ---------- Per-device identity (so you can undo your own claim) ----------
-const ls = { get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } }, set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} } };
 let dev = ls.get('reg_dev'); if(!dev){ dev = Math.random().toString(36).slice(2)+Date.now().toString(36); ls.set('reg_dev',dev); }
 let myName = ls.get('reg_name') || '';
-// Owner mode: open the page with #owner once; #guest switches back.
 if(location.hash === '#owner') ls.set('reg_owner','1');
 if(location.hash === '#guest') ls.set('reg_owner','');
 const OWNER = ls.get('reg_owner') === '1';
@@ -243,192 +367,226 @@ document.getElementById('ownerBar').hidden = !OWNER;
 document.getElementById('exitOwner').addEventListener('click', e => { e.preventDefault(); ls.set('reg_owner',''); location.hash = ''; location.reload(); });
 
 // ---------- State ----------
-let claims = {};       // itemId -> [{id,name,qty,at,dev}]
-let hidden = {};       // itemId -> true
+let claims = {}, pledges = {}, hidden = {};
 let online = true, lastSync = null;
-let filter = { q:'', cat:'all', hideDone: false };
-let openForm = null;   // itemId whose claim form is open
+let filter = { q:'', cat:'all', hideDone:false, price:'any' };
+let openForm = null, openPledge = null;
 
 const api = async (path, opts={}) => {
   const r = await fetch(DB + path + '.json', Object.assign({ cache:'no-store' }, opts));
   if(!r.ok) throw new Error('db '+r.status);
   return r.status===204 ? null : r.json();
 };
+const put = (path, body) => api(path, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
 function toList(obj){ return obj && typeof obj==='object' ? Object.keys(obj).map(k => Object.assign({ id:k }, obj[k])) : []; }
+function byItem(raw){ const o = {}; Object.keys(raw||{}).forEach(k => { const l = toList(raw[k]).sort((a,b)=>String(a.at).localeCompare(String(b.at))); if(l.length) o[k]=l; }); return o; }
 async function load(){
-  const [rawClaims, rawHidden] = await Promise.all([api('/claims'), api('/hidden')]);
-  const c = {}; Object.keys(rawClaims||{}).forEach(k => { const l = toList(rawClaims[k]); if(l.length) c[k]=l; });
-  return { claims:c, hidden: rawHidden || {} };
+  const [c, p, h] = await Promise.all([api('/claims'), api('/pledges'), api('/hidden')]);
+  return { claims: byItem(c), pledges: byItem(p), hidden: h || {} };
 }
 async function sync(quiet){
-  try{ const doc = await load(); claims = doc.claims; hidden = doc.hidden; online = true; lastSync = new Date(); }
+  try{ const d = await load(); claims = d.claims; pledges = d.pledges; hidden = d.hidden; online = true; lastSync = new Date(); }
   catch(e){ online = false; }
   render(quiet);
 }
-async function addClaim(item, name, qty){
-  // Re-check capacity right before writing, then write only this claim's own key (no overwrite of others).
+const newId = () => Math.random().toString(36).slice(2,10);
+async function addClaim(item, name, qty, msg){
   const current = toList(await api('/claims/'+item.id));
   const already = current.reduce((a,x)=>a+(Number(x.qty)||1),0);
-  if(already >= need(item)) return false;
-  const id = Math.random().toString(36).slice(2,10);
-  await api('/claims/'+item.id+'/'+id, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, qty: Math.min(qty, need(item)-already), at: new Date().toISOString(), dev }) });
-  return true;
+  if(already >= need(item) || (item.group && pledgedSum(item, toList(await api('/pledges/'+item.id))) >= item.price)) return false;
+  const doc = { name, qty: Math.min(qty, need(item)-already), at: new Date().toISOString(), dev }; if(msg) doc.msg = msg;
+  await put('/claims/'+item.id+'/'+newId(), doc); return true;
 }
-async function removeClaim(itemId, claimId){ await api('/claims/'+itemId+'/'+claimId, { method:'DELETE' }); }
-async function setHidden(itemId, on){
-  if(on) await api('/hidden/'+itemId, { method:'PUT', headers:{'Content-Type':'application/json'}, body:'true' });
-  else await api('/hidden/'+itemId, { method:'DELETE' });
+async function addPledge(item, name, amount, msg){
+  const doc = { name, amount, at: new Date().toISOString(), dev }; if(msg) doc.msg = msg;
+  await put('/pledges/'+item.id+'/'+newId(), doc);
 }
+const removeClaim = (itemId, id) => api('/claims/'+itemId+'/'+id, { method:'DELETE' });
+const removePledge = (itemId, id) => api('/pledges/'+itemId+'/'+id, { method:'DELETE' });
+const setHidden = (itemId, on) => on ? put('/hidden/'+itemId, true) : api('/hidden/'+itemId, { method:'DELETE' });
 
 // ---------- Helpers ----------
 const esc = s => String(s==null?'':s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const sar = n => n==null ? '' : 'SAR ' + Number(n).toLocaleString('en-US',{maximumFractionDigits:0});
+const fmt = n => Number(n).toLocaleString('en-US',{maximumFractionDigits:0});
+const sar = n => n==null ? '' : 'SAR ' + fmt(n);
 function gifted(item){ return (claims[item.id]||[]).reduce((a,c)=>a+(Number(c.qty)||1),0); }
 function need(item){ return Number(item.qty)||1; }
-function isDone(item){ return gifted(item) >= need(item); }
-function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>{t.hidden=true},2600); }
+function pledgedSum(item, list){ return (list || pledges[item.id] || []).reduce((a,p)=>a+(Number(p.amount)||0),0); }
+function isDone(item){ return gifted(item) >= need(item) || (item.group && pledgedSum(item) >= item.price); }
+function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.hidden=false; clearTimeout(toast._t); toast._t=setTimeout(()=>{el.hidden=true},2800); }
 const ICONS = {
   check:'<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg>',
   box:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 8 12 3l9 5-9 5-9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>'
 };
 window.__ICON_BOX = ICONS.box;
+function fuzzy(q, text){ if(q.length < 4) return false; return text.split(/[^a-z0-9؀-ۿ]+/).some(w => w.length >= 4 && Math.abs(w.length-q.length) <= 1 && lev(q, w) <= 1); }
+function lev(a, b){ const m=a.length, n=b.length; let prev=Array.from({length:n+1},(_,i)=>i), cur=new Array(n+1); for(let i=1;i<=m;i++){ cur[0]=i; for(let j=1;j<=n;j++){ cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1)); } [prev,cur]=[cur,prev]; } return prev[n]; }
 
 // ---------- Rendering ----------
 function buildChips(){
   const el = document.getElementById('chips');
-  const all = [{id:'all',name:'Everything'}].concat(CATS);
-  el.innerHTML = all.map(c => `<button class="chip" data-cat="${esc(c.id)}" aria-pressed="${filter.cat===c.id}">${esc(c.name)}</button>`).join('');
+  const all = [{id:'all',name:t('everything')},{id:'essential',name:t('essentials'),star:true}].concat(CATS.map(c => ({id:c.id, name:catName(c)})));
+  el.innerHTML = all.map(c => `<button class="chip${c.star?' star':''}" data-cat="${esc(c.id)}" aria-pressed="${filter.cat===c.id}">${esc(c.name)}</button>`).join('');
   el.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { filter.cat = b.dataset.cat; buildChips(); render(); window.scrollTo({top: document.getElementById('main').offsetTop - 120, behavior:'smooth'}); }));
+}
+function inPrice(item){
+  const p = item.price; if(filter.price==='any') return true; if(p==null) return false;
+  if(filter.price==='u100') return p < 100; if(filter.price==='100') return p>=100 && p<300; if(filter.price==='300') return p>=300 && p<800; return p>=800;
 }
 function matches(item){
   if(hidden[item.id] && !OWNER) return false;
-  if(filter.cat!=='all' && item.cat!==filter.cat) return false;
+  if(filter.cat==='essential'){ if(!item.essential) return false; } else if(filter.cat!=='all' && item.cat!==filter.cat) return false;
   if(filter.hideDone && isDone(item)) return false;
-  if(filter.q){ const h = (item.name+' '+(item.brand||'')+' '+(item.store||'')+' '+(item.note||'')+' '+(CATS.find(c=>c.id===item.cat)||{}).name).toLowerCase(); if(!h.includes(filter.q) && !fuzzy(filter.q, h)) return false; }
+  if(!inPrice(item)) return false;
+  if(filter.q){ const h = (item.name+' '+itemName(item)+' '+(item.brand||'')+' '+(item.store||'')+' '+(item.note||'')+' '+itemNote(item)+' '+(CATS.find(c=>c.id===item.cat)||{}).name).toLowerCase(); if(!h.includes(filter.q) && !fuzzy(filter.q, h)) return false; }
   return true;
 }
-// Tolerates one typo ("diper" finds "diaper") on words of 4+ letters.
-function fuzzy(q, text){
-  if(q.length < 4) return false;
-  return text.split(/[^a-z0-9]+/).some(w => w.length >= 4 && Math.abs(w.length-q.length) <= 1 && lev(q, w) <= 1);
-}
-function lev(a, b){
-  const m=a.length, n=b.length; let prev=Array.from({length:n+1},(_,i)=>i), cur=new Array(n+1);
-  for(let i=1;i<=m;i++){ cur[0]=i; for(let j=1;j<=n;j++){ cur[j]=Math.min(prev[j]+1, cur[j-1]+1, prev[j-1]+(a[i-1]===b[j-1]?0:1)); } [prev,cur]=[cur,prev]; }
-  return prev[n];
+function formHTML(item, kind){
+  const n = need(item), g = gifted(item);
+  const amounts = [100,200,300,500].filter(a => a < (item.price||0));
+  return `<form class="form" data-form="${esc(item.id)}" data-kind="${kind}">
+    <label>${t('yourName')}<input id="name-${esc(item.id)}" name="name" value="${esc(myName)}" placeholder="${esc(t('namePh'))}" required maxlength="40" autocomplete="name"></label>
+    ${kind==='claim' && n-g>1 ? `<label>${t('howMany')}<select id="qty-${esc(item.id)}" name="qty">${Array.from({length:n-g},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join('')}</select></label>` : ''}
+    ${kind==='pledge' ? `<label>${t('amount')}<input id="amt-${esc(item.id)}" name="amount" type="number" inputmode="numeric" min="10" max="${esc(item.price)}" step="1" required></label><div class="amt">${amounts.map(a=>`<button type="button" data-amt="${a}">SAR ${a}</button>`).join('')}</div>` : ''}
+    <label>${t('message')}<textarea id="msg-${esc(item.id)}" name="msg" maxlength="140" placeholder="${esc(t('msgPh'))}"></textarea></label>
+    <div class="err" hidden></div>
+    <div class="actions"><button class="btn" type="submit">${t('confirm')}</button><button class="btn ghost" type="button" data-cancel="1">${t('cancel')}</button></div>
+  </form>`;
 }
 function cardHTML(item){
   const done = isDone(item), g = gifted(item), n = need(item);
-  const cs = claims[item.id] || [];
-  // Pictures are stored in img/<id>.jpg (see tools/fetch_images.py); fall back to the retailer URL, then to an icon.
+  const cs = claims[item.id] || [], ps = pledges[item.id] || [];
   const thumb = item.img ? `<img src="img/${esc(item.id)}.jpg" alt="" loading="lazy" referrerpolicy="no-referrer" data-fallback="${esc(item.img)}" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback;this.dataset.fallback='';}else{this.replaceWith(document.createRange().createContextualFragment(window.__ICON_BOX))}">` : ICONS.box;
   const links = [];
-  if(item.url) links.push(`<a class="primary" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.store ? 'Buy at '+item.store : 'View item')}</a>`);
-  if((item.alt||[]).length) links.push('<span class="or">or</span>');
+  if(item.url) links.push(`<a class="primary" href="${esc(item.url)}" target="_blank" rel="noopener">${esc(item.store ? t('buyAt')(item.store) : t('view'))}</a>`);
+  if((item.alt||[]).length) links.push(`<span class="or">${t('or')}</span>`);
   (item.alt||[]).forEach(a => links.push(`<a href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.label)}</a>`));
-  const statusRows = cs.map(c => {
-    const mine = c.dev===dev;
-    const canRemove = mine || OWNER;
-    return `<div class="status">${ICONS.check}<span class="who">${esc(c.name||'Someone')}${n>1?` · ${c.qty||1}`:''}</span>${canRemove?`<button class="x" data-undo="${esc(item.id)}" data-cid="${esc(c.id)}" data-label="${mine?'Undo':'Remove'}">${mine?'Undo':'Remove'}</button>`:''}</div>`;
-  }).join('');
-  let action = '';
-  if(openForm===item.id){
-    action = `<form class="form" data-form="${esc(item.id)}">
-      <label>Your name<input id="name-${esc(item.id)}" name="name" value="${esc(myName)}" placeholder="So we know who to thank" required maxlength="40" autocomplete="name"></label>
-      ${n-g>1?`<label>How many did you buy?<select id="qty-${esc(item.id)}" name="qty">${Array.from({length:n-g},(_,i)=>`<option value="${i+1}">${i+1}</option>`).join('')}</select></label>`:''}
-      <div class="err" hidden></div>
-      <div class="actions"><button class="btn" type="submit">Confirm</button><button class="btn ghost" type="button" data-cancel="1">Cancel</button></div>
-    </form>`;
-  } else if(!done){
-    action = `<button class="btn" data-claim="${esc(item.id)}">I bought this${n>1?` (${n-g} still needed)`:''}</button>`;
+  const row = (c, kind) => {
+    const mine = c.dev===dev, canRemove = mine || OWNER;
+    const what = kind==='pledge' ? ` · ${t('pledgeWord')(fmt(c.amount))}` : (n>1 ? ` ${t('unit')} ${c.qty||1}` : '');
+    return `<div class="status">${ICONS.check}<span class="who">${esc(c.name||'Someone')}${what}</span>${canRemove?`<button class="x" data-undo="${esc(item.id)}" data-cid="${esc(c.id)}" data-kind="${kind}" data-label="${mine?t('undo'):t('remove')}">${mine?t('undo'):t('remove')}</button>`:''}</div>`;
+  };
+  const statusRows = cs.map(c => row(c,'claim')).concat(ps.map(p => row(p,'pledge'))).join('');
+  let pledgeBar = '';
+  if(item.group && (ps.length || !done)){
+    const sum = Math.min(pledgedSum(item), item.price);
+    pledgeBar = `<div class="pledge"><div class="track"><div class="fill" style="width:${Math.round(100*sum/item.price)}%"></div></div><b>${t('pledged')(fmt(sum), fmt(item.price))}</b></div>`;
   }
-  const priceTxt = item.price!=null ? `<b>${sar(item.price)}</b><span>${item.priceNote?esc(item.priceNote):'approx.'}</span>` : `<b>${esc(item.priceNote||'')}</b><span></span>`;
+  let action = '';
+  if(openForm===item.id) action = formHTML(item, openPledge===item.id ? 'pledge' : 'claim');
+  else if(!done){
+    action = item.group
+      ? `<div class="two"><button class="btn" data-pledge="${esc(item.id)}">${t('chipIn')}</button><button class="btn ghost" data-claim="${esc(item.id)}">${t('boughtWhole')}</button></div>`
+      : `<button class="btn" data-claim="${esc(item.id)}">${t('iBought')}${n>1?t('stillNeeded')(n-g):''}</button>`;
+  }
   const isHidden = !!hidden[item.id];
-  const ownerTools = OWNER ? `<button class="btn ghost small" data-hide="${esc(item.id)}" data-on="${isHidden?'0':'1'}">${isHidden?'Unhide item':'Hide from guests'}</button>` : '';
+  const ownerTools = OWNER ? `<button class="btn ghost small" data-hide="${esc(item.id)}" data-on="${isHidden?'0':'1'}">${isHidden?t('unhide'):t('hide')}</button>` : '';
+  const pn = itemPriceNote(item);
+  const priceTxt = item.price!=null ? `<b>${sar(item.price)}</b><span>${esc(pn || t('approx'))}</span>` : `<b>${esc(pn)}</b><span></span>`;
+  const note = itemNote(item);
   return `<article class="item${done?' done':''}${isHidden?' hiddenitem':''}" id="item-${esc(item.id)}">
-    ${isHidden?'<span class="ribbon muted">Hidden</span>':done?'<span class="ribbon">Bought</span>':''}
-    <div class="head"><div class="thumb">${thumb}</div><div class="ttl"><h3>${esc(item.name)}</h3><div class="meta">${item.brand && item.brand!==item.store?`<span>${esc(item.brand)}</span>`:''}${item.store?`<span class="store">${esc(item.store)}</span>`:''}${n>1?`<span>Need ${n}${g?` · ${g} bought`:''}</span>`:''}</div></div></div>
-    ${item.note?`<div class="note${item.cotton?' cotton':''}">${esc(item.note)}</div>`:''}
+    ${isHidden?`<span class="ribbon muted">${t('hiddenRibbon')}</span>`:done?`<span class="ribbon">${t('boughtRibbon')}</span>`:''}
+    <div class="head"><button class="thumb" type="button" data-zoom="${esc(item.id)}" aria-label="${esc(itemName(item))}">${thumb}</button><div class="ttl"><h3>${esc(itemName(item))}</h3><div class="meta">${item.brand && item.brand!==item.store?`<span>${esc(item.brand)}</span>`:''}${item.store?`<span class="store">${esc(item.store)}</span>`:''}${item.essential?`<span class="tag">${t('essential')}</span>`:''}${item.group?`<span class="tag">${t('groupTag')}</span>`:''}${n>1?`<span>${t('need')(n)}${g?` · ${t('bought')(g)}`:''}</span>`:''}</div></div></div>
+    ${note?`<div class="note${item.cotton?' cotton':''}">${esc(note)}</div>`:''}
     <div class="foot">
       <div class="price">${priceTxt}</div>
       ${links.length?`<div class="links">${links.join('')}</div>`:''}
-      <div class="claim">${statusRows}${action}${ownerTools}</div>
+      <div class="claim">${pledgeBar}${statusRows}${action}${ownerTools}</div>
     </div>
   </article>`;
 }
+function ownerPanelHTML(){
+  const rows = [];
+  ITEMS.forEach(i => { (claims[i.id]||[]).forEach(c => rows.push({at:c.at, who:c.name, what:`${itemName(i)}${need(i)>1?` ${t('unit')} ${c.qty||1}`:''}`, msg:c.msg||''})); (pledges[i.id]||[]).forEach(p => rows.push({at:p.at, who:p.name, what:`${itemName(i)} — ${t('pledgeWord')(fmt(p.amount))}`, msg:p.msg||''})); });
+  rows.sort((a,b)=>String(b.at).localeCompare(String(a.at)));
+  const date = s => { const d = new Date(s); return isNaN(d) ? '' : d.toLocaleDateString(lang==='ar'?'ar-SA':'en-GB',{day:'numeric',month:'short'}); };
+  const body = rows.length ? `<div class="tbl"><table><thead><tr><th>${t('colWhen')}</th><th>${t('colWho')}</th><th>${t('colWhat')}</th><th>${t('colMsg')}</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${esc(date(r.at))}</td><td>${esc(r.who)}</td><td>${esc(r.what)}</td><td class="msg">${esc(r.msg)}</td></tr>`).join('')}</tbody></table></div>` : `<div class="empty">${t('giftsEmpty')}</div>`;
+  const text = rows.map(r=>`${date(r.at)} — ${r.who}: ${r.what}${r.msg?` (“${r.msg}”)`:''}`).join('\n');
+  return `<h2>${t('giftsTitle')} <small style="font-family:var(--body);font-size:13px;color:var(--muted)">${rows.length}</small></h2>${body}${rows.length?`<div><button class="copy" id="copyList" data-copy="${esc(text)}">${t('copyList')}</button></div>`:''}`;
+}
 function render(quiet){
   const main = document.getElementById('main');
-  const html = [];
-  let shown = 0;
+  const html = []; let shown = 0;
   CATS.forEach(c => {
-    const items = ITEMS.filter(i => i.cat===c.id && matches(i));
-    if(!items.length) return;
-    shown += items.length;
-    html.push(`<section id="cat-${esc(c.id)}"><h2>${esc(c.name)}<small>${items.length} item${items.length===1?'':'s'}</small></h2>${c.blurb?`<p class="blurb">${esc(c.blurb)}</p>`:''}<div class="grid">${items.map(cardHTML).join('')}</div></section>`);
+    const items = ITEMS.filter(i => i.cat===c.id && matches(i)); if(!items.length) return; shown += items.length;
+    html.push(`<section id="cat-${esc(c.id)}"><h2>${esc(catName(c))}<small>${t('items')(items.length)}</small></h2>${catBlurb(c)?`<p class="blurb">${esc(catBlurb(c))}</p>`:''}<div class="grid">${items.map(cardHTML).join('')}</div></section>`);
   });
-  main.innerHTML = shown ? html.join('') : `<div class="empty">Nothing matches that. Try another word or category.</div>`;
-  // progress
+  main.innerHTML = shown ? html.join('') : `<div class="empty">${t('nothing')}</div>`;
   const visible = ITEMS.filter(i => !hidden[i.id] || OWNER);
   const total = visible.length, doneN = visible.filter(isDone).length;
-  const pct = total ? (100*doneN/total)+'%' : '0%', label = `${doneN} of ${total} items complete`;
+  const pct = total ? (100*doneN/total)+'%' : '0%', label = t('progress')(doneN, total);
   ['fill','fill2'].forEach(id => { document.getElementById(id).style.width = pct; });
   ['prog','prog2'].forEach(id => { document.getElementById(id).textContent = label; });
   document.getElementById('offline').hidden = online;
-  document.getElementById('sync').textContent = lastSync ? 'Last synced ' + lastSync.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}) + (OWNER?' · owner mode':'') : 'Not synced yet';
-  if(openForm){ const f = document.getElementById('name-'+openForm); if(f && !quiet) f.focus(); }
+  document.getElementById('sync').textContent = lastSync ? `${t('synced')} ${lastSync.toLocaleTimeString(lang==='ar'?'ar-SA':[], {hour:'2-digit',minute:'2-digit'})}${OWNER?' · '+t('ownerMode'):''}` : t('notSynced');
+  const panel = document.getElementById('ownerPanel'); panel.hidden = !OWNER; if(OWNER) panel.innerHTML = ownerPanelHTML();
+  if(openForm && !quiet){ const f = document.getElementById('name-'+openForm); if(f) f.focus(); }
 }
 
 // ---------- Events ----------
 document.getElementById('main').addEventListener('click', async e => {
+  const zoom = e.target.closest('[data-zoom]');
+  if(zoom){ const item = ITEMS.find(i=>i.id===zoom.dataset.zoom); const img = zoom.querySelector('img'); if(!img) return; document.getElementById('lbImg').src = img.src; document.getElementById('lbCap').textContent = itemName(item); document.getElementById('lightbox').hidden = false; return; }
   const claimBtn = e.target.closest('[data-claim]');
-  if(claimBtn){ openForm = claimBtn.dataset.claim; render(); return; }
-  if(e.target.closest('[data-cancel]')){ openForm = null; render(); return; }
+  if(claimBtn){ openForm = claimBtn.dataset.claim; openPledge = null; render(); return; }
+  const pledgeBtn = e.target.closest('[data-pledge]');
+  if(pledgeBtn){ openForm = pledgeBtn.dataset.pledge; openPledge = pledgeBtn.dataset.pledge; render(); return; }
+  if(e.target.closest('[data-cancel]')){ openForm = null; openPledge = null; render(); return; }
+  const amt = e.target.closest('[data-amt]');
+  if(amt){ const f = amt.closest('form'); f.amount.value = amt.dataset.amt; return; }
   const undo = e.target.closest('[data-undo]');
   if(undo){
-    // Two-step so a stray tap doesn't un-buy something.
-    if(undo.dataset.armed!=='1'){ undo.dataset.armed='1'; undo.textContent='Really remove?'; setTimeout(()=>{ if(undo.isConnected){ undo.dataset.armed=''; undo.textContent = undo.dataset.label; } }, 4000); return; }
+    if(undo.dataset.armed!=='1'){ undo.dataset.armed='1'; undo.textContent=t('really'); setTimeout(()=>{ if(undo.isConnected){ undo.dataset.armed=''; undo.textContent = undo.dataset.label; } }, 4000); return; }
     undo.disabled = true;
-    try{ await removeClaim(undo.dataset.undo, undo.dataset.cid); toast('Removed. The item is open again.'); }
-    catch(err){ online=false; toast("Couldn't save — check your connection and try again."); }
+    try{ await (undo.dataset.kind==='pledge' ? removePledge : removeClaim)(undo.dataset.undo, undo.dataset.cid); toast(t('removed')); }
+    catch(err){ online=false; toast(t('saveErr')); }
     await sync(true); return;
   }
   const hide = e.target.closest('[data-hide]');
   if(hide){
     hide.disabled = true;
-    try{ await setHidden(hide.dataset.hide, hide.dataset.on==='1'); toast(hide.dataset.on==='1' ? 'Hidden from guests.' : 'Visible to guests again.'); }
-    catch(err){ online=false; toast("Couldn't save — check your connection and try again."); }
+    try{ await setHidden(hide.dataset.hide, hide.dataset.on==='1'); toast(hide.dataset.on==='1' ? t('hidden') : t('unhidden')); }
+    catch(err){ online=false; toast(t('saveErr')); }
     await sync(true); return;
   }
 });
 document.getElementById('main').addEventListener('submit', async e => {
   const form = e.target.closest('[data-form]'); if(!form) return;
   e.preventDefault();
-  const id = form.dataset.form;
-  const name = form.name.value.trim();
-  const err = form.querySelector('.err');
-  if(!name){ err.textContent = 'Please add your name so we can thank you.'; err.hidden=false; return; }
+  const id = form.dataset.form, kind = form.dataset.kind;
+  const name = form.name.value.trim(); const err = form.querySelector('.err');
+  if(!name){ err.textContent = t('nameErr'); err.hidden=false; return; }
+  const item = ITEMS.find(i=>i.id===id);
+  const msg = (form.msg.value||'').trim().slice(0,140);
+  let amount = 0;
+  if(kind==='pledge'){ amount = Math.round(Number(form.amount.value)); if(!(amount >= 10)){ err.textContent = t('amtErr'); err.hidden=false; return; } amount = Math.min(amount, item.price); }
   const qty = form.qty ? Number(form.qty.value) : 1;
   myName = name; ls.set('reg_name', name);
   form.querySelector('[type=submit]').disabled = true;
   try{
-    const item = ITEMS.find(i=>i.id===id);
-    const ok = await addClaim(item, name, qty);
-    openForm = null;
-    toast(ok ? `Thank you, ${name}! Marked as bought.` : 'Someone just bought this one — it was marked moments ago.');
-  }catch(err2){ online=false; err.textContent = "Couldn't save. Check your connection and try again."; err.hidden=false; form.querySelector('[type=submit]').disabled=false; return; }
+    if(kind==='pledge'){ await addPledge(item, name, amount, msg); toast(t('thanksPledge')(name, fmt(amount))); }
+    else { const ok = await addClaim(item, name, qty, msg); toast(ok ? t('thanks')(name) : t('clash')); }
+    openForm = null; openPledge = null;
+  }catch(err2){ online=false; err.textContent = t('saveErr'); err.hidden=false; form.querySelector('[type=submit]').disabled=false; return; }
   await sync(true);
   const card = document.getElementById('item-'+id); const f2 = card && card.querySelector('.status .x, .btn, .links a'); if(f2) f2.focus({preventScroll:true});
 });
 document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim().toLowerCase(); render(true); });
 document.getElementById('hideDone').addEventListener('change', e => { filter.hideDone = e.target.checked; render(true); });
-document.querySelectorAll('[data-copy]').forEach(b => b.addEventListener('click', async () => {
+document.getElementById('priceSel').addEventListener('change', e => { filter.price = e.target.value; render(true); });
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-copy]'); if(!b) return;
   const txt = b.dataset.copy;
-  try{ await navigator.clipboard.writeText(txt); toast('Copied: '+txt); }
-  catch(e){ const el = b.parentElement.querySelector('.val'); const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); toast('Select and copy the highlighted text'); }
-}));
+  try{ await navigator.clipboard.writeText(txt); toast(b.id==='copyList' ? t('copiedList') : t('copied') + txt.slice(0,40)); }
+  catch(err){ const el = b.parentElement.querySelector('.val'); if(el){ const r=document.createRange(); r.selectNodeContents(el); const s=getSelection(); s.removeAllRanges(); s.addRange(r); } toast(t('copyFallback')); }
+});
+const lb = document.getElementById('lightbox');
+lb.addEventListener('click', () => { lb.hidden = true; });
+document.addEventListener('keydown', e => { if(e.key==='Escape') lb.hidden = true; });
 document.addEventListener('visibilitychange', () => { if(document.visibilityState==='visible') sync(true); });
 
 // ---------- Boot ----------
+applyLang();
 buildChips();
 render(true);
 sync(true);
