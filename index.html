@@ -9,8 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23B8536B'/%3E%3Ccircle cx='16' cy='14' r='6' fill='%23fff'/%3E%3C/svg%3E">
-<script src="data.js"></script>
-<script src="ar.js"></script>
+<script src="data.js?v=4"></script>
+<script src="ar.js?v=4"></script>
 <style>
 /* Layout: one quiet column (max 980px); sticky filter bar; picture-led cards in a grid that drops to one column on phones. */
 :root{
@@ -482,11 +482,9 @@ function cardHTML(item){
   const ownerTools = OWNER ? `<button class="btn ghost small" data-hide="${esc(item.id)}" data-on="${isHidden?'0':'1'}">${isHidden?t('unhide'):t('hide')}</button>` : '';
   const pn = itemPriceNote(item);
   const priceTxt = item.price!=null ? `<b>${sar(item.price)}</b><span>${esc(pn || t('approx'))}</span>` : `<b>${esc(pn)}</b><span></span>`;
-  const note = itemNote(item);
   return `<article class="item${done?' done':''}${isHidden?' hiddenitem':''}" id="item-${esc(item.id)}">
     ${isHidden?`<span class="ribbon muted">${t('hiddenRibbon')}</span>`:done?`<span class="ribbon">${t('boughtRibbon')}</span>`:''}
     <div class="head"><button class="thumb" type="button" data-zoom="${esc(item.id)}" aria-label="${esc(itemName(item))}">${thumb}</button><div class="ttl"><h3>${esc(itemName(item))}</h3><div class="meta">${item.brand && item.brand!==item.store?`<span>${esc(item.brand)}</span>`:''}${item.store?`<span class="store">${esc(item.store)}</span>`:''}${item.essential?`<span class="tag">${t('essential')}</span>`:''}${item.group?`<span class="tag">${t('groupTag')}</span>`:''}${n>1?`<span>${t('need')(n)}${g?` · ${t('bought')(g)}`:''}</span>`:''}</div></div></div>
-    ${note?`<div class="note">${esc(note)}</div>`:''}
     <div class="foot">
       <div class="price">${priceTxt}</div>
       ${links.length?`<div class="links">${links.join('')}</div>`:''}
