@@ -128,7 +128,6 @@ section .blurb{color:var(--muted);font-size:14.5px;margin:6px 0 0;max-width:70ch
 .store{display:inline-block;font-size:11.5px;font-weight:600;letter-spacing:.04em;padding:2px 7px;border-radius:6px;background:var(--bg);border:1px solid var(--line);color:var(--fg)}
 .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent-ink)}
 .item .note{font-size:13.5px;line-height:1.45;color:var(--fg);background:var(--bg);border-radius:9px;padding:8px 10px}
-.item .note.cotton{background:var(--warn-soft);color:var(--warn-ink)}
 .item .foot{display:grid;gap:10px}
 .item .price{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-variant-numeric:tabular-nums;flex-wrap:wrap}
 .item .price b{font-size:17px;font-weight:600;white-space:nowrap}
@@ -487,7 +486,7 @@ function cardHTML(item){
   return `<article class="item${done?' done':''}${isHidden?' hiddenitem':''}" id="item-${esc(item.id)}">
     ${isHidden?`<span class="ribbon muted">${t('hiddenRibbon')}</span>`:done?`<span class="ribbon">${t('boughtRibbon')}</span>`:''}
     <div class="head"><button class="thumb" type="button" data-zoom="${esc(item.id)}" aria-label="${esc(itemName(item))}">${thumb}</button><div class="ttl"><h3>${esc(itemName(item))}</h3><div class="meta">${item.brand && item.brand!==item.store?`<span>${esc(item.brand)}</span>`:''}${item.store?`<span class="store">${esc(item.store)}</span>`:''}${item.essential?`<span class="tag">${t('essential')}</span>`:''}${item.group?`<span class="tag">${t('groupTag')}</span>`:''}${n>1?`<span>${t('need')(n)}${g?` · ${t('bought')(g)}`:''}</span>`:''}</div></div></div>
-    ${note?`<div class="note${item.cotton?' cotton':''}">${esc(note)}</div>`:''}
+    ${note?`<div class="note">${esc(note)}</div>`:''}
     <div class="foot">
       <div class="price">${priceTxt}</div>
       ${links.length?`<div class="links">${links.join('')}</div>`:''}
