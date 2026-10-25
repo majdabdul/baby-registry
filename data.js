@@ -88,7 +88,7 @@ window.REGISTRY_ITEMS = [
   { id:'yoyo-0', cat:'travel', name:'YOYO 0+ newborn pack', brand:'Stokke', store:'Amazon.sa', qty:1, price:947, url:AMZ('B0CXZFJ3TM'), img:AIMG('41coiAHhJTL') },
   { id:'yoyo-base', cat:'travel', name:'YOYO base fabric accessory, Black', brand:'Stokke', store:'Mumzworld', qty:1, price:450, url:'https://www.mumzworld.com/sa-en/stokke-yoyo-base-fabric-accessory-black-45808368-658900', img:'https://www.mumzworld.com/media/catalog/product/cache/8bf0fdee44d330ce9e3c910273b66bb2/45808368-658900-1.jpg' },
   { id:'yoyo-handle', cat:'travel', name:'Neoprene handlebar covers for YOYO', brand:'Protec Tif', store:'Amazon.sa', qty:1, price:112, url:AMZ('B0CCY5YG48'), img:AIMG('31vaM616ToL') },
-  { id:'carrier', cat:'travel', name:'Baby Carrier Mini, 100% cotton, Dusty Pink', brand:'BabyBjörn', store:'Amazon.sa', qty:1, price:553, url:AMZ('B07D5FDQ69'), img:AIMG('61MyYUekWkL'), alt:[{label:'Woven version (SAR 336)', url:AMZ('B0CVRW8QGV')}] },
+  { id:'carrier', cat:'travel', name:'Baby Carrier Mini, 100% cotton, Black', brand:'BabyBjörn', store:'Amazon.sa', qty:1, price:553, url:AMZ('B07D5FX7CX'), img:AIMG('61odMF3C15L'), alt:[{label:'Woven, Black (SAR 327)', url:AMZ('B0CLV7JPPK')}] },
 
   // ---------------- PLAY & SOOTHING ----------------
   { id:'pacifiers', cat:'play', name:'Avent Soothie pacifiers 0–3 months, pink/purple (2-pack)', brand:'Philips', store:'Amazon.sa', qty:2, price:84, url:AMZ('B009EDDHDQ'), img:AIMG('518EwTdlnTL'), alt:[{label:"Dr. Brown's HappyPaci (SAR 73)", url:AMZ('B0G4NS8Z77')},{label:'Ninni Co (ships from the US)', url:'https://ninnico.com'}] },

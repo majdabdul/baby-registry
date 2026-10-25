@@ -68,7 +68,7 @@ window.REGISTRY_AR = {
     'yoyo-0':          { name:'طقم حديثي الولادة YOYO 0+' },
     'yoyo-base':       { name:'قماش قاعدة عربة YOYO، أسود' },
     'yoyo-handle':     { name:'أغطية مقبض نيوبرين لعربة YOYO' },
-    'carrier':         { name:'حمّالة BabyBjörn Mini لحديثي الولادة، قطن ١٠٠٪، وردي مغبر' },
+    'carrier':         { name:'حمّالة BabyBjörn Mini لحديثي الولادة، قطن ١٠٠٪، أسود' },
     'pacifiers':       { name:'لهّايات Avent Soothie ٠–٣ شهور، وردي/بنفسجي (قطعتان)' },
     'toys-bw':         { name:'ألعاب أبيض وأسود عالية التباين' },
     'play-mat':        { name:'جيم خشبي للبيبي بألعاب باستيل' },
