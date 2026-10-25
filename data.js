@@ -16,7 +16,7 @@ window.REGISTRY_CATEGORIES = [
   { id:'travel',    name:'Out & About' },
   { id:'play',      name:'Play & Soothing' },
   { id:'nursery',   name:'Nursery' },
-  { id:'mama',      name:'For Mama',           blurb:'A few things for Asma for the weeks after the birth.' },
+  { id:'mama',      name:'For Mama',           blurb:'A few things for mama for the weeks after the birth.' },
 ];
 
 window.REGISTRY_ITEMS = [
@@ -55,7 +55,7 @@ window.REGISTRY_ITEMS = [
   { id:'changing-pad', cat:'diapering', name:'Changing pad', brand:'Babyworks', store:'Amazon.sa', qty:1, price:188, priceNote:'approx.', url:AMZS('Babyworks baby changing pad'), note:'Wipeable changing pad for the dresser.' },
   { id:'changing-pad-travel', cat:'diapering', name:'Portable travel changing pad', brand:'Zoney', store:'Amazon.sa', qty:1, price:54, url:AMZ('B0DD41WLV6'), img:AIMG('41ILx-gC7PL') },
   { id:'caddy', cat:'diapering', name:'Cotton-rope diaper caddy & nursery basket, pink', brand:'Bumble & Bird', store:'Mumzworld', qty:1, price:50, url:'https://www.mumzworld.com/sa-en/bumble-bird-cotton-rope-diaper-caddy-pink', note:'100% cotton rope, BPA-free.' },
-  { id:'ubuy-item', cat:'diapering', name:'Changing table (Ubuy item #273265328)', store:'Ubuy', qty:1, url:'https://www.ubuy.com.sa/en/search/?q=changing%20table', priceNote:'See Ubuy', note:'Ubuy item number 273265328 — direct link coming soon.' },
+  { id:'ubuy-item', cat:'nursery', name:'Changing table with foldable top, 3 drawers & open storage, white', store:'Ubuy', qty:1, price:854, url:'https://www.ubuy.com.sa/en/product/TLZ6H6SRI-baby-changing-table-with-foldable-tabletop-white-baby-dresser-with-3-drawers-open-storage-space-modern-diaper-changing-station-with-storage', note:'Ubuy item #273265328. Ships from abroad, so allow a couple of weeks.' },
   { id:'diaper-bag', cat:'diapering', name:'Indi diaper backpack', brand:'Dagne Dover', store:'Dagne Dover', qty:1, price:937, priceNote:'approx. (USD 250, ships from the US)', url:'https://www.dagnedover.com/products/indi-diaper-backpack' },
   { id:'diaper-pail', cat:'diapering', name:'Diaper pail', store:'Amazon.sa', qty:1, url:AMZS('diaper pail'), priceNote:'Your choice', note:'Any sealed diaper pail (Ubbi, Tommee Tippee Twist & Click or similar).' },
 
@@ -92,7 +92,7 @@ window.REGISTRY_ITEMS = [
   { id:'car-seat', cat:'travel', name:'Cloud Z2 i-Size infant car seat', brand:'Cybex', store:'Mumzworld', qty:1, url:MZ('Cybex Cloud Z2'), priceNote:'~SAR 1,500–2,000', note:'Cybex Cloud Z (Z2) i-Size. Any colour.' },
   { id:'yoyo-6', cat:'travel', name:'YOYO 6+ colour pack, Toffee', brand:'Stokke', store:'Amazon.sa', qty:1, price:441, url:AMZ('B0CXZFHFTV'), img:AIMG('316ZoMVXOWL') },
   { id:'yoyo-0', cat:'travel', name:'YOYO 0+ newborn pack', brand:'Stokke', store:'Amazon.sa', qty:1, price:947, url:AMZ('B0CXZFJ3TM'), img:AIMG('41coiAHhJTL') },
-  { id:'yoyo-base', cat:'travel', name:'YOYO³ base fabric accessory, Black', brand:'Stokke', store:'Stokke', qty:1, priceNote:'See Stokke', url:'https://www.stokke.com/en-ae/category/accessories/yoyo-stroller-accessories', alt:[{label:'Centrepoint KSA (Stokke stockist)', url:'https://www.centrepointstores.com/sa/en/search?q=stokke%20yoyo'}], note:'The black base fabric for the YOYO³ frame. Stokke sells through Centrepoint and Mothercare in Saudi.' },
+  { id:'yoyo-base', cat:'travel', name:'YOYO base fabric accessory, Black', brand:'Stokke', store:'Mumzworld', qty:1, price:450, url:'https://www.mumzworld.com/sa-en/stokke-yoyo-base-fabric-accessory-black-45808368-658900', note:'The black base fabric for the YOYO frame. Only a couple left in stock.' },
   { id:'yoyo-handle', cat:'travel', name:'Neoprene handlebar covers for YOYO', brand:'Protec Tif', store:'Amazon.sa', qty:1, price:112, url:AMZ('B0CCY5YG48'), img:AIMG('31vaM616ToL') },
   { id:'carrier', cat:'travel', name:'Baby carrier', brand:'Ergobaby', store:'Mumzworld', qty:1, url:MZ('Ergobaby carrier'), priceNote:'~SAR 600–900', note:'Ergobaby Omni or Embrace, newborn-ready. Cotton version please.', cotton:true },
 

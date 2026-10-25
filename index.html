@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Baby Registry · Asma & Majd</title>
+<title>Baby Registry · Majd</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap">
@@ -126,6 +126,10 @@ section .blurb{color:var(--muted);font-size:14.5px;margin:6px 0 0;max-width:70ch
 .status .x{margin-left:auto;border:0;background:transparent;color:var(--muted);font-size:12.5px;font-weight:600;cursor:pointer;padding:2px 6px;border-radius:6px;white-space:nowrap}
 .status .x:hover{color:var(--accent-ink);background:var(--card)}
 .ribbon{position:absolute;top:12px;right:12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--good);color:#fff;padding:3px 8px;border-radius:999px}
+.ribbon.muted{background:var(--muted)}
+.item.hiddenitem{opacity:.55;border-style:dashed}
+.btn.small{padding:7px 10px;font-size:13px}
+#ownerBar{background:var(--accent-soft);color:var(--fg);border-radius:10px;padding:10px 14px}
 
 /* Claim form (inline) */
 .form{display:grid;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px}
@@ -199,7 +203,8 @@ footer .sync{font-variant-numeric:tabular-nums}
 <footer class="wrap">
   <div id="offline" class="offline" hidden>Can't reach the shared list right now. You can still browse, but “I bought this” won't save until you're back online.</div>
   <div class="sync" id="sync">Last synced: —</div>
-  <div>Questions about an item? Just message us. With love, <span id="family">Asma &amp; Majd</span>.</div>
+  <div>Questions about an item? Just message me. With love, <span id="family">Majd</span>.</div>
+  <div id="ownerBar" hidden>Owner mode is on: you can hide items and remove anyone's claim. <a href="#guest" id="exitOwner">Switch back to guest view</a></div>
 </footer>
 
 <div class="toast" id="toast" hidden role="status"></div>
@@ -208,9 +213,9 @@ footer .sync{font-variant-numeric:tabular-nums}
 (function(){
 'use strict';
 // ---------- Config ----------
-const FAMILY = 'Asma & Majd';
-// Shared store for "bought" marks. Swap this object to change backends (e.g. Firebase) — everything below calls only load()/save().
-const STORE = { url: 'https://api.npoint.io/6d2dc2c0eefbffddeb58' };
+const FAMILY = 'Majd';
+// Shared store: Firebase Realtime Database (REST). Data lives at /claims/{itemId}/{claimId} and /hidden/{itemId}.
+const DB = 'https://baby-registry-85f68-default-rtdb.europe-west1.firebasedatabase.app';
 const POLL_MS = 25000;
 
 const ITEMS = window.REGISTRY_ITEMS || [];
@@ -221,39 +226,49 @@ document.getElementById('family').textContent = FAMILY;
 const ls = { get(k){ try{ return localStorage.getItem(k) }catch(e){ return null } }, set(k,v){ try{ localStorage.setItem(k,v) }catch(e){} } };
 let dev = ls.get('reg_dev'); if(!dev){ dev = Math.random().toString(36).slice(2)+Date.now().toString(36); ls.set('reg_dev',dev); }
 let myName = ls.get('reg_name') || '';
-const OWNER = location.hash === '#owner';
+// Owner mode: open the page with #owner once; #guest switches back.
+if(location.hash === '#owner') ls.set('reg_owner','1');
+if(location.hash === '#guest') ls.set('reg_owner','');
+const OWNER = ls.get('reg_owner') === '1';
+document.getElementById('ownerBar').hidden = !OWNER;
+document.getElementById('exitOwner').addEventListener('click', e => { e.preventDefault(); ls.set('reg_owner',''); location.hash = ''; location.reload(); });
 
 // ---------- State ----------
 let claims = {};       // itemId -> [{id,name,qty,at,dev}]
+let hidden = {};       // itemId -> true
 let online = true, lastSync = null;
 let filter = { q:'', cat:'all', hideDone: false };
 let openForm = null;   // itemId whose claim form is open
-let savedAt = null;
 
+const api = async (path, opts={}) => {
+  const r = await fetch(DB + path + '.json', Object.assign({ cache:'no-store' }, opts));
+  if(!r.ok) throw new Error('db '+r.status);
+  return r.status===204 ? null : r.json();
+};
+function toList(obj){ return obj && typeof obj==='object' ? Object.keys(obj).map(k => Object.assign({ id:k }, obj[k])) : []; }
 async function load(){
-  const r = await fetch(STORE.url + '?t=' + Date.now(), { cache:'no-store' });
-  if(!r.ok) throw new Error('load '+r.status);
-  const doc = await r.json();
-  return (doc && typeof doc==='object' && doc.claims && typeof doc.claims==='object') ? doc : { claims:{} };
-}
-async function save(doc){
-  doc.updated = Date.now();
-  const r = await fetch(STORE.url, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(doc) });
-  if(!r.ok) throw new Error('save '+r.status);
+  const [rawClaims, rawHidden] = await Promise.all([api('/claims'), api('/hidden')]);
+  const c = {}; Object.keys(rawClaims||{}).forEach(k => { const l = toList(rawClaims[k]); if(l.length) c[k]=l; });
+  return { claims:c, hidden: rawHidden || {} };
 }
 async function sync(quiet){
-  try{
-    const doc = await load();
-    claims = doc.claims; online = true; lastSync = new Date();
-  }catch(e){ online = false; }
+  try{ const doc = await load(); claims = doc.claims; hidden = doc.hidden; online = true; lastSync = new Date(); }
+  catch(e){ online = false; }
   render(quiet);
 }
-// Read-merge-write so two people claiming different things at the same moment don't overwrite each other.
-async function mutate(fn){
-  const doc = await load();
-  fn(doc.claims);
-  await save(doc);
-  claims = doc.claims; lastSync = new Date(); online = true;
+async function addClaim(item, name, qty){
+  // Re-check capacity right before writing, then write only this claim's own key (no overwrite of others).
+  const current = toList(await api('/claims/'+item.id));
+  const already = current.reduce((a,x)=>a+(Number(x.qty)||1),0);
+  if(already >= need(item)) return false;
+  const id = Math.random().toString(36).slice(2,10);
+  await api('/claims/'+item.id+'/'+id, { method:'PUT', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, qty: Math.min(qty, need(item)-already), at: new Date().toISOString(), dev }) });
+  return true;
+}
+async function removeClaim(itemId, claimId){ await api('/claims/'+itemId+'/'+claimId, { method:'DELETE' }); }
+async function setHidden(itemId, on){
+  if(on) await api('/hidden/'+itemId, { method:'PUT', headers:{'Content-Type':'application/json'}, body:'true' });
+  else await api('/hidden/'+itemId, { method:'DELETE' });
 }
 
 // ---------- Helpers ----------
@@ -276,6 +291,7 @@ function buildChips(){
   el.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => { filter.cat = b.dataset.cat; buildChips(); render(); window.scrollTo({top: document.getElementById('main').offsetTop - 120, behavior:'smooth'}); }));
 }
 function matches(item){
+  if(hidden[item.id] && !OWNER) return false;
   if(filter.cat!=='all' && item.cat!==filter.cat) return false;
   if(filter.hideDone && isDone(item)) return false;
   if(filter.q){ const h = (item.name+' '+(item.brand||'')+' '+(item.store||'')+' '+(item.note||'')).toLowerCase(); if(!h.includes(filter.q)) return false; }
@@ -305,14 +321,16 @@ function cardHTML(item){
     action = `<button class="btn" data-claim="${esc(item.id)}">I bought this${n>1?` (${n-g} still needed)`:''}</button>`;
   }
   const priceTxt = item.price!=null ? `<b>${sar(item.price)}</b><span>${item.priceNote?esc(item.priceNote):'approx.'}</span>` : `<b>${esc(item.priceNote||'')}</b><span></span>`;
-  return `<article class="item${done?' done':''}" id="item-${esc(item.id)}">
-    ${done?'<span class="ribbon">Bought</span>':''}
+  const isHidden = !!hidden[item.id];
+  const ownerTools = OWNER ? `<button class="btn ghost small" data-hide="${esc(item.id)}" data-on="${isHidden?'0':'1'}">${isHidden?'Unhide item':'Hide from guests'}</button>` : '';
+  return `<article class="item${done?' done':''}${isHidden?' hiddenitem':''}" id="item-${esc(item.id)}">
+    ${isHidden?'<span class="ribbon muted">Hidden</span>':done?'<span class="ribbon">Bought</span>':''}
     <div class="head"><div class="thumb">${thumb}</div><div class="ttl"><h3>${esc(item.name)}</h3><div class="meta">${item.brand && item.brand!==item.store?`<span>${esc(item.brand)}</span>`:''}${item.store?`<span class="store">${esc(item.store)}</span>`:''}${n>1?`<span>Need ${n}${g?` · ${g} bought`:''}</span>`:''}</div></div></div>
     ${item.note?`<div class="note${item.cotton?' cotton':''}">${esc(item.note)}</div>`:''}
     <div class="foot">
       <div class="price">${priceTxt}</div>
       ${links.length?`<div class="links">${links.join('')}</div>`:''}
-      <div class="claim">${statusRows}${action}</div>
+      <div class="claim">${statusRows}${action}${ownerTools}</div>
     </div>
   </article>`;
 }
@@ -344,11 +362,16 @@ document.getElementById('main').addEventListener('click', async e => {
   const undo = e.target.closest('[data-undo]');
   if(undo){
     undo.disabled = true;
-    try{
-      await mutate(c => { const list = c[undo.dataset.undo]||[]; c[undo.dataset.undo] = list.filter(x => x.id!==undo.dataset.cid && !(x.dev===dev && !x.id)); if(!c[undo.dataset.undo].length) delete c[undo.dataset.undo]; });
-      toast('Removed. The item is open again.');
-    }catch(err){ online=false; toast("Couldn't save — check your connection and try again."); }
-    render(true);
+    try{ await removeClaim(undo.dataset.undo, undo.dataset.cid); toast('Removed. The item is open again.'); }
+    catch(err){ online=false; toast("Couldn't save — check your connection and try again."); }
+    await sync(true); return;
+  }
+  const hide = e.target.closest('[data-hide]');
+  if(hide){
+    hide.disabled = true;
+    try{ await setHidden(hide.dataset.hide, hide.dataset.on==='1'); toast(hide.dataset.on==='1' ? 'Hidden from guests.' : 'Visible to guests again.'); }
+    catch(err){ online=false; toast("Couldn't save — check your connection and try again."); }
+    await sync(true); return;
   }
 });
 document.getElementById('main').addEventListener('submit', async e => {
@@ -363,18 +386,11 @@ document.getElementById('main').addEventListener('submit', async e => {
   form.querySelector('[type=submit]').disabled = true;
   try{
     const item = ITEMS.find(i=>i.id===id);
-    let clash = false;
-    await mutate(c => {
-      const list = c[id] || [];
-      const already = list.reduce((a,x)=>a+(Number(x.qty)||1),0);
-      if(already >= need(item)){ clash = true; return; }
-      list.push({ id: Math.random().toString(36).slice(2,10), name, qty: Math.min(qty, need(item)-already), at: new Date().toISOString(), dev });
-      c[id] = list;
-    });
+    const ok = await addClaim(item, name, qty);
     openForm = null;
-    toast(clash ? 'Someone just bought this one — it was marked moments ago.' : `Thank you, ${name}! Marked as bought.`);
+    toast(ok ? `Thank you, ${name}! Marked as bought.` : 'Someone just bought this one — it was marked moments ago.');
   }catch(err2){ online=false; err.textContent = "Couldn't save. Check your connection and try again."; err.hidden=false; form.querySelector('[type=submit]').disabled=false; return; }
-  render(true);
+  await sync(true);
 });
 document.getElementById('q').addEventListener('input', e => { filter.q = e.target.value.trim().toLowerCase(); render(true); });
 document.getElementById('hideDone').addEventListener('change', e => { filter.hideDone = e.target.checked; render(true); });
