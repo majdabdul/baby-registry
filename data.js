@@ -7,7 +7,7 @@ const NEXT = p => 'https://www.next.sa/en/style/' + p;
 const NIMG = code => 'https://xcdn.next.co.uk/Common/Items/Default/Default/ItemImages/3_4Ratio/SearchINT/Lge/' + code + '.jpg?im=Resize,width=450';
 
 window.REGISTRY_CATEGORIES = [
-  { id:'clothing',  name:'Clothing',           blurb:'Everything she wears should be 100% cotton, or at least completely free of synthetic fabrics (polyester, nylon, elastane, acrylic). Please check the label before buying — Next has a “100% Cotton” filter. Pinks and pastels, please!' },
+  { id:'clothing',  name:'Clothing' },
   { id:'sleep',     name:'Sleeping' },
   { id:'diapering', name:'Diapering' },
   { id:'feeding',   name:'Feeding' },
@@ -16,7 +16,7 @@ window.REGISTRY_CATEGORIES = [
   { id:'travel',    name:'Out & About' },
   { id:'play',      name:'Play & Soothing' },
   { id:'nursery',   name:'Nursery' },
-  { id:'mama',      name:'For Mama',           blurb:'A few things for mama for the weeks after the birth.' },
+  { id:'mama',      name:'For Mama' },
 ];
 
 window.REGISTRY_ITEMS = [
@@ -35,7 +35,6 @@ window.REGISTRY_ITEMS = [
   { id:'swaddles-tog', cat:'clothing', name:'Sleep sack 1.0 TOG, pastel floral, 100% cotton muslin', brand:'aden + anais', store:'Amazon.sa', qty:2, price:143, url:AMZ('B08TJ4496T'), img:AIMG('71KHub7zLZL'), alt:[{label:'Organic floral version (SAR 193)', url:AMZ('B09W34TNJ3')}] },
 
   // ---------------- SLEEPING ----------------
-  { id:'crib', cat:'sleep', name:'2-in-1 bedside bassinet & crib with mattress, beige', brand:'Bumble & Bird', store:'Mumzworld', qty:1, price:549, priceNote:'on sale from SAR 669', url:'https://www.mumzworld.com/sa-en/bumble-bird-adjustable-bedside-bassinet-crib-awl-bc102t', img:'https://www.mumzworld.com/media/catalog/product/a/w/awl-bc102t-1_1.jpg' },
   { id:'next2me', cat:'sleep', name:'Next2Me Essential bedside crib', brand:'Chicco', store:'Amazon.sa', qty:1, price:756, url:AMZ('B0CT3J5ML7'), img:AIMG('313f8PjZR2L') },
   { id:'mattress', cat:'sleep', name:'Crib & toddler bed mattress, 60 × 120 × 10 cm', brand:'MOON', store:'Mumzworld', qty:1, price:183, url:'https://www.mumzworld.com/sa-en/moon-crib-toddler-bed-mattress-with-print-60x120x10cm', img:'https://www.mumzworld.com/media/catalog/product/t/c/tc-mnbmswp04-moon-crib-toddler-bed-mattress-with-print-60x120x10cm-1615288378.jpg', alt:[{label:'Plain white (SAR 133)', url:'https://www.mumzworld.com/sa-en/moon-crib-toddler-bed-mattress-white-60x120x10cm'}] },
   { id:'sheets', cat:'sleep', name:'Pink jersey-cotton fitted cot sheets, 60 × 120 (2-pack)', brand:'Clair de Lune', store:'Amazon.sa', qty:1, price:70, url:AMZ('B002HD2GEG'), img:AIMG('61VLJl2Nt0L'), alt:[{label:'Bright pink 2-pack', url:AMZ('B07JKVPHYR')}] },
@@ -53,21 +52,17 @@ window.REGISTRY_ITEMS = [
   { id:'diaper-cream', cat:'diapering', name:'Sudocrem antiseptic healing cream, 250 g', brand:'Sudocrem', store:'Amazon.sa', qty:1, price:46, url:AMZ('B081VT4HSH'), img:AIMG('61APcuw9hzL') },
   { id:'liniment', cat:'diapering', name:'Liniment oléo-calcaire, 300 ml', brand:'Gilbert', store:'Amazon.sa', qty:1, price:87, url:AMZ('B08GQY3C8L'), img:AIMG('71-Fg3uGEiL') },
   { id:'changing-pad', cat:'diapering', name:'Contoured changing pad with cover', brand:'Jool Baby', store:'Amazon.sa', qty:1, price:258, url:AMZ('B0DH9TQ1DP'), img:AIMG('81cfOoFa9LL'), alt:[{label:'Other changing pads', url:AMZS('baby changing pad contoured waterproof')}] },
-  { id:'changing-pad-travel', cat:'diapering', name:'Portable travel changing pad, pink floral', brand:'Hombys', store:'Amazon.sa', qty:1, price:95, url:AMZ('B0D9NH5FQR'), img:AIMG('81KuHp+dOjL') },
   { id:'caddy', cat:'diapering', name:'Cotton-rope diaper caddy & nursery basket, pink', brand:'Bumble & Bird', store:'Mumzworld', qty:1, price:50, url:'https://www.mumzworld.com/sa-en/bumble-bird-cotton-rope-diaper-caddy-pink', img:'https://www.mumzworld.com/media/catalog/product/t/t/ttt-ttcrd-pink-bumble-bird-cotton-rope-diaper-caddy-pink-1641907425.jpg' },
   { id:'diaper-bag', cat:'diapering', name:'Indi diaper backpack, large, Dune (dusty rose)', brand:'Dagne Dover', store:'Dagne Dover', qty:1, price:937, priceNote:'approx. (USD 250, ships from the US)', url:'https://www.dagnedover.com/products/indi-diaper-backpack-large-dune-reset', img:'https://cdn.shopify.com/s/files/1/0260/1439/files/dagne-2025-Baby_Indi_Dune_L_front.jpg?v=1764953275', alt:[{label:'Medium size (USD 225)', url:'https://www.dagnedover.com/products/indi-diaper-backpack-medium-dune-reset'}] },
-  { id:'diaper-pail', cat:'diapering', name:'Ubbi steel diaper pail', brand:'Ubbi', store:'Amazon.sa', qty:1, price:414, url:AMZ('B079SKMYHR'), img:AIMG('71Iv-fMenFL'), alt:[{label:'Other diaper pails', url:AMZS('diaper pail')}] },
 
   // ---------------- FEEDING ----------------
   { id:'bottles', cat:'feeding', name:'Pigeon glass feeding bottles, 160 ml', brand:'Pigeon', store:'Amazon.sa', qty:4, price:35, priceNote:'each', url:AMZ('B07MVX9M66'), img:AIMG('71VhLkWv3qL'), alt:[{label:'Premium wide-neck glass (often out of stock)', url:AMZ('B0C7R7PT9P')},{label:'Wide-neck glass set', url:AMZ('B0BGPJY2MN')}] },
   { id:'bottle-brush', cat:'feeding', name:'Double-ended silicone bottle brush, blush', brand:'Haakaa', store:'Mumzworld', qty:1, price:87, url:'https://www.mumzworld.com/sa-en/haakaa-silicone-double-ended-bottle-brush-blush', img:'https://www.mumzworld.com/media/catalog/product/JBC-NHK071-1.jpg' },
-  { id:'sterilizer', cat:'feeding', name:'Avent steam sterilizer', brand:'Philips', store:'Amazon.sa', qty:1, price:430, url:AMZ('B08Q1625XH'), img:AIMG('71xUum5OEGL'), alt:[{label:'Premium sterilizer + dryer (SAR 612)', url:AMZ('B08Q14ZHC5')}] },
   { id:'warmer', cat:'feeding', name:'Avent electric bottle warmer', brand:'Philips', store:'Amazon.sa', qty:1, price:255, url:AMZ('B084PMMS2H'), img:AIMG('71NFssXODGL') },
   { id:'milk-bags', cat:'feeding', name:'Breast milk storage bags, 50 pcs', brand:'Medela', store:'Amazon.sa', qty:1, price:66, url:AMZ('B0D97THKQK'), img:AIMG('71YtCCZHY9L') },
   { id:'burp-cloths', cat:'feeding', name:'Muslin burp cloths, pink floral, 100% cotton (3-pack)', store:'Amazon.sa', qty:2, price:48, priceNote:'per pack', url:AMZ('B0GY3VFFC7'), img:AIMG('71yFID5u29L') },
 
   // ---------------- BATHING & GROOMING ----------------
-  { id:'bathtub', cat:'bath', name:'Shnuggle baby bath + rinsing jug, Blossom pink', brand:'Shnuggle', store:'Mumzworld', qty:1, price:221, url:'https://www.mumzworld.com/sa-en/shnuggle-baby-bath-rinsing-jug-bundle-blossom-2pc-set-40749957-sbp-bsm-jbsm', img:'https://www.mumzworld.com/media/catalog/product/4/0/40749957-_sbp_bsm_jbsm-1.png', alt:[{label:'White & grey tub only (SAR 159)', url:'https://www.mumzworld.com/sa-en/shnuggle-baby-bath-tub-white-with-grey'}] },
   { id:'flexi-support', cat:'bath', name:'Flexi Bath Newborn Support', brand:'Stokke', store:'Mothercare', qty:1, price:133, url:'https://www.mothercare.com.sa/en/buy-stokke-flexi-bath-newborn-support-3-0', img:'https://www.mothercare.com.sa/en/media_12b05375fb22c7a58a3247bca9b77d7be6a02ce60.avif?width=1200&format=pjpg&optimize=medium', alt:[{label:'Amazon.sa (SAR 168)', url:AMZ('B07VF6RLHQ')}] },
   { id:'wash', cat:'bath', name:'Baby wash & shampoo', brand:'SheaMoisture', store:'Amazon.sa', qty:1, price:54, url:AMZ('B07FNZG13J'), img:AIMG('71H8ygJYHHL') },
   { id:'klorane-gel', cat:'bath', name:'Klorane Bébé gentle cleansing gel', brand:'Klorane', store:'Amazon.sa', qty:2, price:80, priceNote:'each, approx.', url:AMZS('Klorane bebe gentle cleansing gel'), img:AIMG('51TxzFaiI3L') },
@@ -93,22 +88,17 @@ window.REGISTRY_ITEMS = [
   { id:'yoyo-0', cat:'travel', name:'YOYO 0+ newborn pack', brand:'Stokke', store:'Amazon.sa', qty:1, price:947, url:AMZ('B0CXZFJ3TM'), img:AIMG('41coiAHhJTL') },
   { id:'yoyo-base', cat:'travel', name:'YOYO base fabric accessory, Black', brand:'Stokke', store:'Mumzworld', qty:1, price:450, url:'https://www.mumzworld.com/sa-en/stokke-yoyo-base-fabric-accessory-black-45808368-658900', img:'https://www.mumzworld.com/media/catalog/product/cache/8bf0fdee44d330ce9e3c910273b66bb2/45808368-658900-1.jpg' },
   { id:'yoyo-handle', cat:'travel', name:'Neoprene handlebar covers for YOYO', brand:'Protec Tif', store:'Amazon.sa', qty:1, price:112, url:AMZ('B0CCY5YG48'), img:AIMG('31vaM616ToL') },
-  { id:'carrier', cat:'travel', name:'Embrace newborn carrier, blush pink', brand:'Ergobaby', store:'Amazon.sa', qty:1, price:620, url:AMZ('B08HN1X9Y2'), img:AIMG('712D0CWSCiL'), alt:[{label:'Omni Dream, 100% cotton (black)', url:AMZ('B09DL94GZY')}] },
+  { id:'carrier', cat:'travel', name:'Baby Carrier Mini, 100% cotton, Dusty Pink', brand:'BabyBjörn', store:'Amazon.sa', qty:1, price:553, url:AMZ('B07D5FDQ69'), img:AIMG('61MyYUekWkL'), alt:[{label:'Woven version (SAR 336)', url:AMZ('B0CVRW8QGV')}] },
 
   // ---------------- PLAY & SOOTHING ----------------
-  { id:'pacifiers', cat:'play', name:'JBØRN × BIBS pacifier gift set, Blush (3 pacifiers, clip & holder)', brand:'JBØRN', store:'JBØRN', qty:1, price:188, priceNote:'approx. (USD 50, ships from abroad)', url:'https://www.jborn.com/products/jborn-x-bibs-special-edition-gift-box?variant=42609032560779', img:'https://www.jborn.com/cdn/shop/files/bibs-try-pack-holders-set-blush.png?v=1788867375', alt:[{label:'All pacifier clips & holders', url:'https://www.jborn.com/collections/pacifier-holders-and-clips'}] },
+  { id:'pacifiers', cat:'play', name:'Avent Soothie pacifiers 0–3 months, pink/purple (2-pack)', brand:'Philips', store:'Amazon.sa', qty:2, price:84, url:AMZ('B009EDDHDQ'), img:AIMG('518EwTdlnTL'), alt:[{label:"Dr. Brown's HappyPaci (SAR 73)", url:AMZ('B0G4NS8Z77')},{label:'Ninni Co (ships from the US)', url:'https://ninnico.com'}] },
   { id:'toys-bw', cat:'play', name:'Black & white high-contrast toys', store:'Amazon.sa', qty:1, price:40, url:AMZ('B09VGSRPNL'), img:AIMG('81Bri2LIWtL') },
   { id:'play-mat', cat:'play', name:'Wooden play gym with pastel toys', store:'Amazon.sa', qty:1, price:127, url:AMZ('B0DYCN7D19'), img:AIMG('61JdW0fJQaL') },
-  { id:'book', cat:'play', name:'The Wonderful Things You Will Be (book)', brand:'Emily Winfield Martin', store:'Amazon.sa', qty:1, price:85, url:AMZ('0385376715'), img:AIMG('81uTOqps04L') },
-  { id:'mamaroo', cat:'play', name:'MamaRoo smart baby swing, beige', brand:'4moms', store:'Mumzworld', qty:1, price:1699, priceNote:'on sale from SAR 2,019', url:'https://www.mumzworld.com/sa-en/uppababy-baby-mamaroo-smart-swing-654-2001-mro-eu-000-config-p-36590-749833', img:'https://www.mumzworld.com/media/catalog/product/cache/8bf0fdee44d330ce9e3c910273b66bb2/654-2001_MRO_EU__000-CONFIG-1.jpg', alt:[{label:'Amazon.sa', url:AMZS('4moms mamaroo')}] },
-  { id:'mobile', cat:'play', name:'Crib mobile with music & lights, pink', store:'Amazon.sa', qty:1, price:68, url:AMZ('B0CP3ZC15D'), img:AIMG('71BgqVYG42L') },
 
   // ---------------- NURSERY ----------------
   { id:'ubuy-item', cat:'nursery', name:'Changing table with foldable top, 3 drawers & open storage, white', store:'Ubuy', qty:1, price:854, url:'https://www.ubuy.com.sa/en/product/TLZ6H6SRI-baby-changing-table-with-foldable-tabletop-white-baby-dresser-with-3-drawers-open-storage-space-modern-diaper-changing-station-with-storage', img:AIMG('81szotkr-SL') },
-  { id:'dresser', cat:'nursery', name:'HEMNES chest of 3 drawers, white stain', brand:'IKEA', store:'IKEA', qty:1, price:1095, url:'https://www.ikea.com/sa/en/p/hemnes-chest-of-3-drawers-white-stain-80424745/', img:'https://www.ikea.com/sa/en/images/products/hemnes-chest-of-3-drawers-white-stain__0152647_pe311000_s5.jpg', alt:[{label:'SUNDVIK changing table (SAR 1,295)', url:'https://www.ikea.com/sa/en/p/sundvik-changing-table-chest-of-drawers-white-30591299/'}] },
   { id:'dividers', cat:'nursery', name:'Drawer dividers, 8-pack', brand:'Vtopmart', store:'Amazon.sa', qty:3, price:53, priceNote:'each', url:AMZ('B09DK9M69S'), img:AIMG('71UDUER5iHL') },
   { id:'storage', cat:'nursery', name:'ÖNSKLIG changing-table baskets, set of 4', brand:'IKEA', store:'IKEA', qty:1, price:60, url:'https://www.ikea.com/sa/en/p/oensklig-stor-baskets-changing-tbl-set-of-4-white-30199283/', img:'https://www.ikea.com/sa/en/images/products/oensklig-stor-baskets-changing-tbl-set-of-4-white__0711380_pe728172_s5.jpg' },
-  { id:'hamper', cat:'nursery', name:'Pink cotton-rope laundry hamper', store:'Amazon.sa', qty:1, price:79, url:AMZ('B0BYZ3N5JR'), img:AIMG('81PBpYm0GzL') },
 
   // ---------------- FOR MAMA ----------------
   { id:'nursing-bra', cat:'mama', name:'Juniors nursing bra with full support & drop-down clips', brand:'Juniors', store:'Babyshop', qty:2, price:39, priceNote:'on sale from SAR 92', url:'https://www.babyshopstores.com/sa/en/buy-juniors-nursing-bra-with-full-support-and-drop-down-nursing-clips/p/168529902-BSRG-Green', img:'https://media.babyshopstores.com/i/babyshop/168529902-BSRG-Green-168529902-BSRG-311020205_01-2100.jpg', alt:[{label:'Black version', url:'https://www.babyshopstores.com/sa/en/buy-juniors-nursing-bra-with-dropdown-nursing-clips/p/168529911-BSRG-Black'}] },
@@ -116,7 +106,6 @@ window.REGISTRY_ITEMS = [
   { id:'silverette', cat:'mama', name:'Silverette silver nursing cups', brand:'Silverette', store:'Amazon.sa', qty:1, price:355, url:AMZ('B00D4MWKNQ'), img:AIMG('417PIKHHPxL') },
   { id:'pump-spectra', cat:'mama', name:'Spectra S1 Plus electric breast pump', brand:'Spectra', store:'Amazon.sa', qty:1, price:1311, url:AMZ('B00DBKFFJM'), img:AIMG('41KuuMV0BHL') },
   { id:'pump-eufy', cat:'mama', name:'eufy S2 Pro wearable breast pump', brand:'eufy', store:'Amazon.sa', qty:1, price:2736, url:AMZ('B0H397M824'), img:AIMG('41aoNBN6wRL') },
-  { id:'heating-pad', cat:'mama', name:'HK Comfort electric heating pad', brand:'Beurer', store:'Amazon.sa', qty:1, price:155, url:AMZ('B00AAW1VKQ'), img:AIMG('81sIsFWq1XL') },
   { id:'pj-cotton-1', cat:'mama', name:'100% cotton pyjama set, short sleeve', brand:"EA'S SECRET", store:'Amazon.sa', qty:1, price:226, url:AMZ('B0DP64H28F'), img:AIMG('311bkgmzMjL') },
   { id:'pj-cotton-2', cat:'mama', name:'100% cotton knit pyjama set, long sleeve', brand:'LUBOT', store:'Amazon.sa', qty:1, price:204, url:AMZ('B0FDGG74KB'), img:AIMG('41nofnpJ98L') },
   { id:'pj-seersucker', cat:'mama', name:'Petite seersucker cotton pyjama set', brand:'Pintage', store:'Amazon.sa', qty:1, price:147, url:AMZ('B0GWR5XFG3'), img:AIMG('31yxT8MfXyL') },
@@ -125,6 +114,6 @@ window.REGISTRY_ITEMS = [
 
 // ---- Tags ----
 // Essentials: the things we'd need from day one. Group gifts: pricey items guests can chip in on together.
-const ESSENTIALS = ['onesies-first','sleepers-first','swaddles-muslin','sleeping-bag','next2me','sheets-next2me','diapers-nb','diapers-1','wipes','diaper-cream','changing-pad','bottles','sterilizer','burp-cloths','bathtub','towels','healthcare-kit','nail-clippers','car-seat','yoyo-0'];
-const GROUP_GIFTS = ['next2me','diaper-bag','yoyo-0','mamaroo','dresser','ubuy-item','pump-spectra','pump-eufy','car-seat','sound-machine'];
+const ESSENTIALS = ['onesies-first','sleepers-first','swaddles-muslin','sleeping-bag','next2me','sheets-next2me','diapers-nb','diapers-1','wipes','diaper-cream','changing-pad','bottles','burp-cloths','towels','healthcare-kit','nail-clippers','car-seat','yoyo-0'];
+const GROUP_GIFTS = ['next2me','diaper-bag','yoyo-0','ubuy-item','pump-spectra','pump-eufy','car-seat','sound-machine'];
 window.REGISTRY_ITEMS.forEach(i => { if (ESSENTIALS.includes(i.id)) i.essential = true; if (GROUP_GIFTS.includes(i.id) && i.price) i.group = true; });
