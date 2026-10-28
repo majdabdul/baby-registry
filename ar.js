@@ -26,6 +26,7 @@ window.REGISTRY_AR = {
     'swaddles-muslin': { name:'أقمطة موسلين بطبعات أرانب وورود وردية، ٤ قطع' },
     'swaddles-tog':    { name:'كيس نوم ١.٠ TOG بطبعة ورود باستيل، موسلين قطن ١٠٠٪' },
     'next2me':         { name:'سرير Next2Me Essential بجانب سرير الأم' },
+    'portable-bassinet': { name:'سرير محمول وحاضنة نوم Baby Dream، بيج', priceNote:'مخفض من ٣١٤ ريال' },
     'mattress':        { name:'مرتبة سرير البيبي ٦٠ × ١٢٠ × ١٠ سم' },
     'sheets':          { name:'ملاءات وردية بمطاط لسرير البيبي ٦٠ × ١٢٠ (قطعتان)' },
     'sheets-next2me':  { name:'ملاءات Next2Me وردي وكريمي، قطن ١٠٠٪ (قطعتان)' },
