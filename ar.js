@@ -32,7 +32,7 @@ window.REGISTRY_AR = {
     'mattress-protector': { name:'واقي مرتبة مقاوم للماء لسرير Next2Me (قطعتان)' },
     'blanket':         { name:'بطانية قطنية مخرّمة وردية ٨٠ × ١٠٠ سم' },
     'dreampod':        { name:'كيس نوم Dreampod ٠–٦ شهور، طبعة ورود Berry', priceNote:'مخفض من ٣١٩ ريال' },
-    'monitor':         { name:'شاشة مراقبة البيبي VM819' },
+    'monitor':         { name:'شاشة مراقبة البيبي الذكية VTech Smart HD Plus بشاشة ٥.٥ إنش وواي فاي' },
     'sound-machine':   { name:'جهاز الضوضاء البيضاء وضوء النوم Hatch Rest', priceNote:'تقريبًا — السعر يتغير كثيرًا' },
     'diapers-nb':      { name:'حفاضات Bambo Nature الصديقة للبيئة، حديثي الولادة' },
     'diapers-1':       { name:'حفاضات Bambo Nature الصديقة للبيئة، مقاس ١ (٢–٥ كجم)' },
