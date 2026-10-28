@@ -63,7 +63,7 @@ window.REGISTRY_AR = {
     'toy-cleaner':     { name:'منظّف طبيعي للألعاب والأسطح' },
     'detergent':       { name:'منظّف غسيل للبيبي بدون عطر' },
     'gripe-water':     { name:'ماء غريب Mommy\'s Bliss (طقم عناية)' },
-    'car-seat':        { name:'مقعد سيارة للرضّع Cloud Z2 i-Size', priceNote:'حوالي ١٬٥٠٠–٢٬٠٠٠ ريال' },
+    'car-seat':        { name:'مقعد سيارة للرضّع Chicco KeyFit Max ClearTex، لون Legend', priceNote:'مخفض من ١٬٧٢٣ ريال' },
     'yoyo-6':          { name:'طقم ألوان YOYO 6+، لون Toffee' },
     'yoyo-0':          { name:'طقم حديثي الولادة YOYO 0+' },
     'yoyo-base':       { name:'قماش قاعدة عربة YOYO، أسود' },

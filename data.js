@@ -83,7 +83,7 @@ window.REGISTRY_ITEMS = [
   { id:'gripe-water', cat:'health', name:"Mommy's Bliss gripe water (baby care set)", brand:"Mommy's Bliss", store:'Amazon.sa', qty:1, price:120, url:AMZ('B0GL2VN5XR'), img:AIMG('61lFhwDdJXL'), alt:[{label:'Little Remedies gripe water (SAR 96)', url:AMZ('B001J5LDM4')}] },
 
   // ---------------- OUT & ABOUT ----------------
-  { id:'car-seat', cat:'travel', name:'Cloud Z2 i-Size infant car seat', brand:'Cybex', store:'Mumzworld', qty:1, priceNote:'~SAR 1,500–2,000', url:MZ('Cybex Cloud Z2'), img:'https://www.mumzworld.com/media/catalog/product/c/b/cbndl-cybex-4444.jpg', alt:[{label:'Cloud G, Almond Beige (Amazon, SAR 931)', url:AMZ('B0DB2HXZK7')}] },
+  { id:'car-seat', cat:'travel', name:'KeyFit Max ClearTex infant car seat, Legend', brand:'Chicco', store:'Mumzworld', qty:1, price:1531, priceNote:'on sale from SAR 1,723', url:'https://www.mumzworld.com/sa-en/chicco-keyfit-max-cleartex-infant-car-seat-legend-28523096-ch87111_18', img:'https://www.mumzworld.com/media/catalog/product/cache/8bf0fdee44d330ce9e3c910273b66bb2/28523096-CH87111_18-1.jpg' },
   { id:'yoyo-6', cat:'travel', name:'YOYO 6+ colour pack, Toffee', brand:'Stokke', store:'Amazon.sa', qty:1, price:441, url:AMZ('B0CXZFHFTV'), img:AIMG('316ZoMVXOWL') },
   { id:'yoyo-0', cat:'travel', name:'YOYO 0+ newborn pack', brand:'Stokke', store:'Amazon.sa', qty:1, price:947, url:AMZ('B0CXZFJ3TM'), img:AIMG('41coiAHhJTL') },
   { id:'yoyo-base', cat:'travel', name:'YOYO base fabric accessory, Black', brand:'Stokke', store:'Mumzworld', qty:1, price:450, url:'https://www.mumzworld.com/sa-en/stokke-yoyo-base-fabric-accessory-black-45808368-658900', img:'https://www.mumzworld.com/media/catalog/product/cache/8bf0fdee44d330ce9e3c910273b66bb2/45808368-658900-1.jpg' },
