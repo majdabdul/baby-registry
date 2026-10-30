@@ -30,6 +30,7 @@ window.REGISTRY_ITEMS = [
   { id:'outfits', cat:'clothing', name:'Baby girl dresses & outfits for occasions', brand:'Mixed brands', store:'Childrensalon', qty:5, price:300, priceNote:'each, approx.', url:'https://www.childrensalon.com/baby/dresses', img:'https://www.childrensalon.com/media/catalog/product/cache/0/image/1000x1000/9df78eab33525d08d6e5fb8d27136e95/e/i/eirene-baby-girls-ivory-floral-satin-dress-633664-02edd0e79b65be170314cfb0b97b4ecc.jpg' },
   { id:'socks', cat:'clothing', name:'Pink baby towel socks, 5-pack', brand:'Next', store:'Next', qty:1, price:47, url:NEXT('su605357/f15570'), img:NIMG('F15570') },
   { id:'hats', cat:'clothing', name:'Pink/white tie-top baby beanies, 3-pack', brand:'Next', store:'Next', qty:1, price:28, url:NEXT('su777936/h63263'), img:NIMG('H63263') },
+  { id:'mittens', cat:'clothing', name:'Soft cotton newborn scratch mittens, black & white stripes', store:'Amazon.sa', qty:1, price:54, url:AMZ('B0DDHM19BC'), img:AIMG('41drFuu9JJL') },
   { id:'sleeping-bag', cat:'clothing', name:'Beekeeper wearable blanket, pink stripe, 100% organic cotton', brand:"Burt's Bees Baby", store:'Amazon.sa', qty:2, price:119, url:AMZ('B071ZNKW4P'), img:AIMG('61qkUxz4xtL'), alt:[{label:'Blush version', url:AMZ('B0DPLKQTKK')}] },
   { id:'swaddles-muslin', cat:'clothing', name:'Muslin swaddles, pink bunny & floral prints (4-pack)', brand:'aden + anais', store:'Amazon.sa', qty:1, price:206, url:AMZ('B0BQZ95NKR'), img:AIMG('81DULnle0wL'), alt:[{label:'Organic fruit print 4-pack (Mumzworld)', url:'https://www.mumzworld.com/sa-en/aden-anais-personalized-organic-cotton-muslin-swaddles-fresh-fruit-4-pcs-large-prs-36104209-aswo40010'}] },
   { id:'swaddles-tog', cat:'clothing', name:'Sleep sack 1.0 TOG, pastel floral, 100% cotton muslin', brand:'aden + anais', store:'Amazon.sa', qty:2, price:143, url:AMZ('B08TJ4496T'), img:AIMG('71KHub7zLZL'), alt:[{label:'Organic floral version (SAR 193)', url:AMZ('B09W34TNJ3')}] },
@@ -94,6 +95,7 @@ window.REGISTRY_ITEMS = [
   // ---------------- PLAY & SOOTHING ----------------
   { id:'pacifiers', cat:'play', name:'Avent Soothie pacifiers 0–3 months, pink/purple (2-pack)', brand:'Philips', store:'Amazon.sa', qty:2, price:84, url:AMZ('B009EDDHDQ'), img:AIMG('518EwTdlnTL'), alt:[{label:"Dr. Brown's HappyPaci (SAR 73)", url:AMZ('B0G4NS8Z77')},{label:'Ninni Co (ships from the US)', url:'https://ninnico.com'}] },
   { id:'toys-bw', cat:'play', name:'Black & white high-contrast toys', store:'Amazon.sa', qty:1, price:40, url:AMZ('B09VGSRPNL'), img:AIMG('81Bri2LIWtL') },
+  { id:'monkibox', cat:'play', name:'“Look With Me” Montessori play box, 0–12 weeks', brand:'Monkibox', store:'Monkibox', qty:1, price:479, url:'https://monkibox.com/en-sa/products/0-12-weeks', img:'https://cdn.shopify.com/s/files/1/1870/2831/files/2_7023d5e7-de70-4c33-9fef-3a758af2f9fe.png?v=1784201360' },
   { id:'play-mat', cat:'play', name:'Wooden play gym with pastel toys', store:'Amazon.sa', qty:1, price:127, url:AMZ('B0DYCN7D19'), img:AIMG('61JdW0fJQaL') },
 
   // ---------------- NURSERY ----------------
