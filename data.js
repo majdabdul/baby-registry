@@ -58,6 +58,7 @@ window.REGISTRY_ITEMS = [
   { id:'changing-pad', cat:'diapering', name:'Contoured changing pad with cover', brand:'Jool Baby', store:'Amazon.sa', qty:1, price:258, url:AMZ('B0DH9TQ1DP'), img:AIMG('81cfOoFa9LL'), alt:[{label:'Other changing pads', url:AMZS('baby changing pad contoured waterproof')}] },
   { id:'caddy', cat:'diapering', name:'Cotton-rope diaper caddy & nursery basket, pink', brand:'Bumble & Bird', store:'Mumzworld', qty:1, price:50, url:'https://www.mumzworld.com/sa-en/bumble-bird-cotton-rope-diaper-caddy-pink', img:'https://www.mumzworld.com/media/catalog/product/t/t/ttt-ttcrd-pink-bumble-bird-cotton-rope-diaper-caddy-pink-1641907425.jpg' },
   { id:'diaper-bag', cat:'diapering', name:'Indi diaper backpack, large, Dune (dusty rose)', brand:'Dagne Dover', store:'Dagne Dover', qty:1, price:937, priceNote:'approx. (USD 250, ships from the US)', url:'https://www.dagnedover.com/products/indi-diaper-backpack-large-dune-reset', img:'https://cdn.shopify.com/s/files/1/0260/1439/files/dagne-2025-Baby_Indi_Dune_L_front.jpg?v=1764953275', alt:[{label:'Medium size (USD 225)', url:'https://www.dagnedover.com/products/indi-diaper-backpack-medium-dune-reset'}] },
+  { id:'storksak-bag', cat:'diapering', name:'St James convertible diaper bag, black scuba', brand:'Storksak', store:'Mumzworld', qty:1, price:766, url:'https://www.mumzworld.com/sa-en/storksak-st-james-scuba-convertible-diaper-bag-black', img:'https://www.mumzworld.com/media/catalog/product/cache/8bf0fdee44d330ce9e3c910273b66bb2/SV-SK5390-1.jpg' },
 
   // ---------------- FEEDING ----------------
   { id:'bottles', cat:'feeding', name:'Pigeon glass feeding bottles, 160 ml', brand:'Pigeon', store:'Amazon.sa', qty:4, price:35, priceNote:'each', url:AMZ('B07MVX9M66'), img:AIMG('71VhLkWv3qL'), alt:[{label:'Premium wide-neck glass (often out of stock)', url:AMZ('B0C7R7PT9P')},{label:'Wide-neck glass set', url:AMZ('B0BGPJY2MN')}] },
@@ -124,5 +125,5 @@ window.REGISTRY_ITEMS = [
 // ---- Tags ----
 // Essentials: the things we'd need from day one. Group gifts: pricey items guests can chip in on together.
 const ESSENTIALS = ['onesies-first','sleepers-first','swaddles-muslin','sleeping-bag','next2me','sheets-next2me','diapers-nb','diapers-1','wipes','diaper-cream','changing-pad','bottles','burp-cloths','towels','healthcare-kit','nail-clippers','car-seat','yoyo-0'];
-const GROUP_GIFTS = ['next2me','diaper-bag','yoyo-0','ubuy-item','pump-spectra','pump-eufy','car-seat','sound-machine'];
+const GROUP_GIFTS = ['next2me','diaper-bag','storksak-bag','yoyo-0','ubuy-item','pump-spectra','pump-eufy','car-seat','sound-machine'];
 window.REGISTRY_ITEMS.forEach(i => { if (ESSENTIALS.includes(i.id)) i.essential = true; if (GROUP_GIFTS.includes(i.id) && i.price) i.group = true; });

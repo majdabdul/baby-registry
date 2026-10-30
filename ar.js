@@ -46,6 +46,7 @@ window.REGISTRY_AR = {
     'changing-pad':    { name:'مفرش تغيير محيطي مع غطاء' },
     'caddy':           { name:'سلة حفاضات ومستلزمات من حبال القطن، وردي' },
     'diaper-bag':      { name:'حقيبة ظهر Indi للحفاضات، كبيرة، لون Dune (وردي مغبر)', priceNote:'تقريبًا (٢٥٠ دولار، تُشحن من أمريكا)' },
+    'storksak-bag':    { name:'حقيبة حفاضات Storksak St James قابلة للتحويل، أسود' },
     'bottles':         { name:'رضّاعات Pigeon زجاجية، ١٦٠ مل', priceNote:'للقطعة' },
     'bottle-brush':    { name:'فرشاة رضّاعات سيليكون بطرفين، وردي فاتح' },
     'warmer':          { name:'سخّان رضّاعات كهربائي Avent' },
