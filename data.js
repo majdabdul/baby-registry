@@ -40,9 +40,9 @@ window.REGISTRY_ITEMS = [
   // ---------------- SLEEPING ----------------
   { id:'next2me', cat:'sleep', name:'Next2Me Essential bedside crib', brand:'Chicco', store:'Amazon.sa', qty:1, price:756, url:AMZ('B0CT3J5ML7'), img:AIMG('313f8PjZR2L') },
   { id:'portable-bassinet', cat:'sleep', name:'Portable bassinet & sleeping pod, beige', brand:'Baby Dream', store:'Mumzworld', qty:1, price:215, priceNote:'on sale from SAR 314', url:'https://www.mumzworld.com/sa-en/baby-dream-portable-bassinet-beige-38799195-pbb107-beige', img:'https://www.mumzworld.com/media/catalog/product/653871049717-1.jpg' },
-  { id:'mattress', cat:'sleep', name:'Crib & toddler bed mattress, 60 × 120 × 10 cm', brand:'MOON', store:'Mumzworld', qty:1, price:183, url:'https://www.mumzworld.com/sa-en/moon-crib-toddler-bed-mattress-with-print-60x120x10cm', img:'https://www.mumzworld.com/media/catalog/product/t/c/tc-mnbmswp04-moon-crib-toddler-bed-mattress-with-print-60x120x10cm-1615288378.jpg', alt:[{label:'Plain white (SAR 133)', url:'https://www.mumzworld.com/sa-en/moon-crib-toddler-bed-mattress-white-60x120x10cm'}] },
-  { id:'sheets', cat:'sleep', name:'Pink jersey-cotton fitted cot sheets, 60 × 120 (2-pack)', brand:'Clair de Lune', store:'Amazon.sa', qty:1, price:70, url:AMZ('B002HD2GEG'), img:AIMG('61VLJl2Nt0L'), alt:[{label:'Bright pink 2-pack', url:AMZ('B07JKVPHYR')}] },
-  { id:'sheets-next2me', cat:'sleep', name:'Next2Me fitted sheets, pink & cream, 100% cotton (2-pack)', brand:'Dudu N Girlie', store:'Amazon.sa', qty:1, price:63, url:AMZ('B01N639FS4'), img:AIMG('81ns9HlNJKL'), alt:[{label:'Pink floral 3-piece set', url:AMZ('B08TRPD8PX')}] },
+  { id:'next2me-mattress', cat:'sleep', name:'Spare Next2Me mattress, 83 × 51 × 5 cm, washable cover', store:'Amazon.sa', qty:1, price:100, url:AMZ('B0GVC2T85S'), img:AIMG('71zapKXKjJL') },
+  { id:'next2me-sheet-set', cat:'sleep', name:'Next2Me pink sheet set: 2 cotton fitted sheets + 1 waterproof sheet', brand:'Goysila', store:'Amazon.sa', qty:1, price:141, url:AMZ('B08TRPD8PX'), img:AIMG('71V4O4oN+jL') },
+  { id:'sheets-next2me', cat:'sleep', name:'Next2Me fitted sheets, pink & cream, 100% cotton (2-pack)', brand:'Dudu N Girlie', store:'Amazon.sa', qty:1, price:63, url:AMZ('B01N639FS4'), img:AIMG('81ns9HlNJKL') },
   { id:'mattress-protector', cat:'sleep', name:'Next2Me waterproof mattress protectors (2)', store:'Amazon.sa', qty:1, price:82, url:AMZ('B0DMMPCTZJ'), img:AIMG('31SRp+El13L') },
   { id:'blanket', cat:'sleep', name:'Pink cotton cellular blanket, 80 × 100 cm', brand:'Clevamama', store:'Mumzworld', qty:1, price:139, url:'https://www.mumzworld.com/sa-en/clevamama-cellular-blanket-80x100cm-pink', img:'https://www.mumzworld.com/media/catalog/product/w/b/wbtt-3485-clevamama-cellular-blanket-80x100cm-pink-1660582599.jpg' },
   { id:'dreampod', cat:'sleep', name:'Dreampod sleeping bag 0–6 months, Berry peony print', brand:'Mamas & Papas', store:'Mamas & Papas', qty:1, price:219, priceNote:'on sale from SAR 319', url:'https://en.mamasandpapas.com.sa/dreampod-0-6-months---2.5-tog---berry-217814573.html', img:'https://mamasandpapas.com.sa/dw/image/v2/BDSP_PRD/on/demandware.static/-/Sites-MnP-master-catalog/default/dwbd253e87/sfcc-mnp-production/2/1/7/8/1/217814573_FR.jpg?sw=540&sh=720&sm=fit&q=90' },
@@ -73,7 +73,7 @@ window.REGISTRY_ITEMS = [
   { id:'silverware', cat:'feeding', name:'Kids’ stainless steel silverware, 12 pieces', brand:'E-far', store:'Amazon.sa', qty:1, price:47, priceNote:'limited-time deal, was SAR 71', url:AMZ('B0D7PZYWW3'), img:AIMG('71dHhWkyB3L') },
 
   // ---------------- BATHING & GROOMING ----------------
-  { id:'flexi-support', cat:'bath', name:'Flexi Bath Newborn Support', brand:'Stokke', store:'Mothercare', qty:1, price:133, url:'https://www.mothercare.com.sa/en/buy-stokke-flexi-bath-newborn-support-3-0', img:'https://www.mothercare.com.sa/en/media_12b05375fb22c7a58a3247bca9b77d7be6a02ce60.avif?width=1200&format=pjpg&optimize=medium', alt:[{label:'Amazon.sa (SAR 168)', url:AMZ('B07VF6RLHQ')}] },
+  { id:'bath-support', cat:'bath', name:'Soft-touch newborn bath support + rinser, pink', brand:'Angelcare', store:'Amazon.sa', qty:1, price:147, url:AMZ('B0GZ14SWNX'), img:AIMG('61cI160Ve4L') },
   { id:'wash', cat:'bath', name:'Baby wash & shampoo', brand:'SheaMoisture', store:'Amazon.sa', qty:1, price:54, url:AMZ('B07FNZG13J'), img:AIMG('71H8ygJYHHL') },
   { id:'klorane-gel', cat:'bath', name:'Klorane Bébé gentle cleansing gel', brand:'Klorane', store:'Amazon.sa', qty:2, price:80, priceNote:'each, approx.', url:AMZS('Klorane bebe gentle cleansing gel'), img:AIMG('51TxzFaiI3L') },
   { id:'klorane-water', cat:'bath', name:'Klorane Bébé no-rinse cleansing water, 500 ml', brand:'Klorane', store:'Amazon.sa', qty:1, price:228, url:AMZ('B07K1LQWCY'), img:AIMG('61J0oskJ4HL'), alt:[{label:'Uriage Bébé 1ère Eau (SAR 60)', url:AMZ('B09Q636DDC')}] },
@@ -128,6 +128,6 @@ window.REGISTRY_ITEMS = [
 
 // ---- Tags ----
 // Essentials: the things we'd need from day one. Group gifts: pricey items guests can chip in on together.
-const ESSENTIALS = ['onesies-first','sleepers-first','swaddles-muslin','sleeping-bag','next2me','sheets-next2me','diapers-nb','diapers-1','wipes','diaper-cream','changing-pad','bottles','burp-cloths','towels','healthcare-kit','nail-clippers','car-seat','yoyo-0'];
+const ESSENTIALS = ['onesies-first','sleepers-first','swaddles-muslin','sleeping-bag','next2me','sheets-next2me','next2me-sheet-set','diapers-nb','diapers-1','wipes','diaper-cream','changing-pad','bottles','burp-cloths','towels','healthcare-kit','nail-clippers','car-seat','yoyo-0'];
 const GROUP_GIFTS = ['next2me','diaper-bag','storksak-bag','yoyo-0','ubuy-item','pump-spectra','pump-eufy','car-seat','sound-machine'];
 window.REGISTRY_ITEMS.forEach(i => { if (ESSENTIALS.includes(i.id)) i.essential = true; if (GROUP_GIFTS.includes(i.id) && i.price) i.group = true; });
