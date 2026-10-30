@@ -27,7 +27,7 @@ window.REGISTRY_AR = {
     'bibs':            { name:'مرايل أحمر/وردي، ٥ قطع' },
     'sleeping-bag':    { name:'كيس نوم (بطانية تُلبس) وردي مخطط، قطن عضوي ١٠٠٪' },
     'swaddles-muslin': { name:'أقمطة موسلين بطبعات أرانب وورود وردية، ٤ قطع' },
-    'swaddles-tog':    { name:'كيس نوم موسلين عضوي ١.٠ TOG بطبعة ورود Earthly (شهادة GOTS)', priceNote:'من ٢٠٠ ريال · مقاس ٦–١٨ شهرًا' },
+    'swaddles-tog':    { name:'كيس نوم Crane Baby Parker موسلين بطبعة ورود، قطن ١٠٠٪ (٠–٩ شهور)', priceNote:'مخفض من ٢١٨ ريال' },
     'next2me':         { name:'سرير Next2Me Essential بجانب سرير الأم' },
     'portable-bassinet': { name:'سرير محمول وحاضنة نوم Baby Dream، بيج', priceNote:'مخفض من ٣١٤ ريال' },
     'mattress':        { name:'مرتبة سرير البيبي ٦٠ × ١٢٠ × ١٠ سم' },
