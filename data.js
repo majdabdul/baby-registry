@@ -63,6 +63,9 @@ window.REGISTRY_ITEMS = [
   { id:'warmer', cat:'feeding', name:'Avent electric bottle warmer', brand:'Philips', store:'Amazon.sa', qty:1, price:255, url:AMZ('B084PMMS2H'), img:AIMG('71NFssXODGL') },
   { id:'milk-bags', cat:'feeding', name:'Breast milk storage bags, 50 pcs', brand:'Medela', store:'Amazon.sa', qty:1, price:66, url:AMZ('B0D97THKQK'), img:AIMG('71YtCCZHY9L') },
   { id:'burp-cloths', cat:'feeding', name:'Muslin burp cloths, pink floral, 100% cotton (3-pack)', store:'Amazon.sa', qty:2, price:48, priceNote:'per pack', url:AMZ('B0GY3VFFC7'), img:AIMG('71yFID5u29L') },
+  { id:'plates', cat:'feeding', name:'Stainless steel plates, 8-inch (set of 4)', brand:'E-far', store:'Amazon.sa', qty:1, price:179, priceNote:'ships from outside KSA', url:AMZ('B07SJJVZ4N'), img:AIMG('61hIm4m5jsL') },
+  { id:'bowls', cat:'feeding', name:'Stainless steel kids’ bowls, 12 oz (4-pack)', brand:'E-far', store:'Amazon.sa', qty:1, price:134, url:AMZ('B07H96RCRR'), img:AIMG('61-HvTWpECL') },
+  { id:'silverware', cat:'feeding', name:'Kids’ stainless steel silverware, 12 pieces', brand:'E-far', store:'Amazon.sa', qty:1, price:47, priceNote:'limited-time deal, was SAR 71', url:AMZ('B0D7PZYWW3'), img:AIMG('71dHhWkyB3L') },
 
   // ---------------- BATHING & GROOMING ----------------
   { id:'flexi-support', cat:'bath', name:'Flexi Bath Newborn Support', brand:'Stokke', store:'Mothercare', qty:1, price:133, url:'https://www.mothercare.com.sa/en/buy-stokke-flexi-bath-newborn-support-3-0', img:'https://www.mothercare.com.sa/en/media_12b05375fb22c7a58a3247bca9b77d7be6a02ce60.avif?width=1200&format=pjpg&optimize=medium', alt:[{label:'Amazon.sa (SAR 168)', url:AMZ('B07VF6RLHQ')}] },
@@ -96,6 +99,7 @@ window.REGISTRY_ITEMS = [
   { id:'pacifiers', cat:'play', name:'Avent Soothie pacifiers 0–3 months, pink/purple (2-pack)', brand:'Philips', store:'Amazon.sa', qty:2, price:84, url:AMZ('B009EDDHDQ'), img:AIMG('518EwTdlnTL'), alt:[{label:"Dr. Brown's HappyPaci (SAR 73)", url:AMZ('B0G4NS8Z77')},{label:'Ninni Co (ships from the US)', url:'https://ninnico.com'}] },
   { id:'toys-bw', cat:'play', name:'Black & white high-contrast toys', store:'Amazon.sa', qty:1, price:40, url:AMZ('B09VGSRPNL'), img:AIMG('81Bri2LIWtL') },
   { id:'monkibox', cat:'play', name:'“Look With Me” Montessori play box, 0–12 weeks', brand:'Monkibox', store:'Monkibox', qty:1, price:479, url:'https://monkibox.com/en-sa/products/0-12-weeks', img:'https://cdn.shopify.com/s/files/1/1870/2831/files/2_7023d5e7-de70-4c33-9fef-3a758af2f9fe.png?v=1784201360' },
+  { id:'soofam-toy', cat:'play', name:'Wooden Montessori spinning drum & mirror toy, 6–12 months', brand:'Soofam', store:'Amazon.sa', qty:1, price:70, url:AMZS('Soofam Baby Toys 6-12 Months Montessori 2-in-1'), img:'img/soofam-toy.jpg' },
   { id:'play-mat', cat:'play', name:'Wooden play gym with pastel toys', store:'Amazon.sa', qty:1, price:127, url:AMZ('B0DYCN7D19'), img:AIMG('61JdW0fJQaL') },
 
   // ---------------- NURSERY ----------------
