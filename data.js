@@ -61,8 +61,10 @@ window.REGISTRY_ITEMS = [
   { id:'storksak-bag', cat:'diapering', name:'St James convertible diaper bag, black scuba', brand:'Storksak', store:'Mumzworld', qty:1, price:766, url:'https://www.mumzworld.com/sa-en/storksak-st-james-scuba-convertible-diaper-bag-black', img:'https://www.mumzworld.com/media/catalog/product/cache/8bf0fdee44d330ce9e3c910273b66bb2/SV-SK5390-1.jpg' },
 
   // ---------------- FEEDING ----------------
-  { id:'bottles', cat:'feeding', name:'Pigeon glass feeding bottles, 160 ml', brand:'Pigeon', store:'Amazon.sa', qty:4, price:35, priceNote:'each', url:AMZ('B07MVX9M66'), img:AIMG('71VhLkWv3qL'), alt:[{label:'Premium wide-neck glass (often out of stock)', url:AMZ('B0C7R7PT9P')},{label:'Wide-neck glass set', url:AMZ('B0BGPJY2MN')}] },
+  { id:'bottles', cat:'feeding', name:'Pigeon glass feeding bottles, 160 ml', brand:'Pigeon', store:'Amazon.sa', qty:4, price:35, priceNote:'each', url:AMZ('B07MVX9M66'), img:AIMG('71VhLkWv3qL'), alt:[{label:'Centrepoint (SAR 65)', url:'https://www.centrepointstores.com/sa/en/buy-pigeon-softouch-wide-neck-glass-nursing-bottle-160-ml/p/167458034'},{label:'Premium wide-neck glass (often out of stock)', url:AMZ('B0C7R7PT9P')},{label:'Wide-neck glass set', url:AMZ('B0BGPJY2MN')}] },
+  { id:'teats', cat:'feeding', name:'SofTouch wide-neck slow-flow teats, size S (2-pack)', brand:'Pigeon', store:'Amazon.sa', qty:2, price:35, url:AMZ('B0DCNZZZYX'), img:AIMG('71XpXBhtj4L'), alt:[{label:'Newborn size SS', url:AMZ('B07MVVXBBW')}] },
   { id:'bottle-brush', cat:'feeding', name:'Double-ended silicone bottle brush, blush', brand:'Haakaa', store:'Mumzworld', qty:1, price:87, url:'https://www.mumzworld.com/sa-en/haakaa-silicone-double-ended-bottle-brush-blush', img:'https://www.mumzworld.com/media/catalog/product/JBC-NHK071-1.jpg' },
+  { id:'drying-rack', cat:'feeding', name:'Bottle drying rack with drip tray, pink', brand:'Paporich', store:'Amazon.sa', qty:1, price:47, url:AMZ('B0CC2KDKW8'), img:AIMG('61Hz3h5952L') },
   { id:'warmer', cat:'feeding', name:'Avent electric bottle warmer', brand:'Philips', store:'Amazon.sa', qty:1, price:255, url:AMZ('B084PMMS2H'), img:AIMG('71NFssXODGL') },
   { id:'milk-bags', cat:'feeding', name:'Breast milk storage bags, 50 pcs', brand:'Medela', store:'Amazon.sa', qty:1, price:66, url:AMZ('B0D97THKQK'), img:AIMG('71YtCCZHY9L') },
   { id:'burp-cloths', cat:'feeding', name:'Muslin burp cloths, pink floral, 100% cotton (3-pack)', store:'Amazon.sa', qty:2, price:48, priceNote:'per pack', url:AMZ('B0GY3VFFC7'), img:AIMG('71yFID5u29L') },
@@ -77,6 +79,7 @@ window.REGISTRY_ITEMS = [
   { id:'klorane-water', cat:'bath', name:'Klorane Bébé no-rinse cleansing water, 500 ml', brand:'Klorane', store:'Amazon.sa', qty:1, price:228, url:AMZ('B07K1LQWCY'), img:AIMG('61J0oskJ4HL'), alt:[{label:'Uriage Bébé 1ère Eau (SAR 60)', url:AMZ('B09Q636DDC')}] },
   { id:'thermometer', cat:'bath', name:'Bath thermometer, old pink', brand:'Béaba', store:'Amazon.sa', qty:1, price:69, url:AMZ('B09Y1R9T6R'), img:AIMG('61HCgOGMJzL') },
   { id:'towels', cat:'bath', name:'Hooded baby towels, pink & beige, 100% cotton muslin (2-pack)', brand:'Yoofoss', store:'Amazon.sa', qty:1, price:56, url:AMZ('B0BTHR1RMB'), img:AIMG('91u0kX8TkRL') },
+  { id:'washcloths', cat:'bath', name:'Pink floral muslin washcloths, 100% cotton (5-pack)', brand:'Crane Baby', store:'Amazon.sa', qty:1, price:109, url:AMZ('B0DGRRXNCN'), img:AIMG('81Y3QsN5NxL'), alt:[{label:'Plain muslin 6-pack (SAR 36)', url:AMZ('B0HD9QJGM2')}] },
   { id:'skin-soother', cat:'bath', name:'DermaFrida skin soother', brand:'Frida Baby', store:'Amazon.sa', qty:1, price:36, url:AMZ('B07CVKRG7F'), img:AIMG('71I-6+lmiuL') },
   { id:'brush', cat:'bath', name:'Baby brush & comb set', brand:'Haakaa', store:'Amazon.sa', qty:1, price:79, url:AMZ('B09N96186X'), img:AIMG('71IArL6mekL') },
 
@@ -100,6 +103,7 @@ window.REGISTRY_ITEMS = [
 
   // ---------------- PLAY & SOOTHING ----------------
   { id:'pacifiers', cat:'play', name:'Avent Soothie pacifiers 0–3 months, pink/purple (2-pack)', brand:'Philips', store:'Amazon.sa', qty:2, price:84, url:AMZ('B009EDDHDQ'), img:AIMG('518EwTdlnTL'), alt:[{label:"Dr. Brown's HappyPaci (SAR 73)", url:AMZ('B0G4NS8Z77')},{label:'Ninni Co (ships from the US)', url:'https://ninnico.com'}] },
+  { id:'paci-clip', cat:'play', name:'Pacifier clips, vintage floral & bows (4-pack)', brand:'Stadela', store:'Amazon.sa', qty:1, price:109, url:AMZ('B0DGWB3CVP'), img:AIMG('81IMuxh-vJL'), alt:[{label:'Nuby pink flowers 2-pack (SAR 47)', url:AMZ('B0B92RYQWH')}] },
   { id:'toys-bw', cat:'play', name:'Black & white high-contrast toys', store:'Amazon.sa', qty:1, price:40, url:AMZ('B09VGSRPNL'), img:AIMG('81Bri2LIWtL') },
   { id:'monkibox', cat:'play', name:'“Look With Me” Montessori play box, 0–12 weeks', brand:'Monkibox', store:'Monkibox', qty:1, price:479, url:'https://monkibox.com/en-sa/products/0-12-weeks', img:'https://cdn.shopify.com/s/files/1/1870/2831/files/2_7023d5e7-de70-4c33-9fef-3a758af2f9fe.png?v=1784201360' },
   { id:'soofam-toy', cat:'play', name:'2-in-1 wooden Montessori spinning drum & rolling bell, 6–12 months', brand:'Soofam', store:'Amazon.sa', qty:1, price:70, url:AMZ('B0GR2NH3KM'), img:AIMG('715m1iqAkvL') },
