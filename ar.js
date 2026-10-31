@@ -69,7 +69,6 @@ window.REGISTRY_AR = {
     'healthcare-kit':  { name:'حقيبة العناية الصحية' },
     'nosefrida':       { name:'شفاط الأنف NoseFrida', priceNote:'تقريبًا' },
     'sterimar':        { name:'بخاخ الأنف Stérimar Baby' },
-    'saline':          { name:'محلول ملحي معقّم Physiodose، ٤٠ جرعة' },
     'nail-clippers':   { name:'طقم العناية بالأظافر الكهربائي، وردي' },
     'toy-cleaner':     { name:'منظّف طبيعي للألعاب والأسطح' },
     'detergent':       { name:'منظّف غسيل للبيبي بدون عطر' },

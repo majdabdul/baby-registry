@@ -87,7 +87,6 @@ window.REGISTRY_ITEMS = [
   { id:'healthcare-kit', cat:'health', name:'Healthcare kit', brand:'Tommee Tippee', store:'Amazon.sa', qty:1, price:74, url:AMZ('B002IS0M32'), img:AIMG('81Q2RrtTmkL') },
   { id:'nosefrida', cat:'health', name:'NoseFrida nasal aspirator', brand:'Frida Baby', store:'Amazon.sa', qty:1, price:55, priceNote:'approx.', url:AMZS('NoseFrida Snotsucker nasal aspirator'), img:AIMG('71eaa003JIL') },
   { id:'sterimar', cat:'health', name:'Stérimar Baby nasal spray', brand:'Stérimar', store:'Amazon.sa', qty:1, price:30, url:AMZ('B017P1TISG'), img:AIMG('71JRH7f-29L') },
-  { id:'saline', cat:'health', name:'Physiodose sterile saline, 40 single doses', brand:'Gilbert', store:'Amazon.sa', qty:1, price:65, url:AMZ('B00IGBSTM6'), img:AIMG('61yWP2YaMRL') },
   { id:'nail-clippers', cat:'health', name:'Electric baby nail care set, pink', brand:'Haakaa', store:'Amazon.sa', qty:1, price:109, url:AMZ('B08H22JLBV'), img:AIMG('610szesXAiL') },
   { id:'toy-cleaner', cat:'health', name:'Natural toy & surface cleaner', brand:'ATTITUDE', store:'Amazon.sa', qty:1, price:36, url:AMZ('B08QFYKMHF'), img:AIMG('61V27hJOVBL') },
   { id:'detergent', cat:'health', name:'Baby laundry detergent, fragrance-free', brand:'ATTITUDE', store:'Amazon.sa', qty:2, price:64, url:AMZ('B00AXBNWX8'), img:AIMG('61lQyhU+BmL') },
