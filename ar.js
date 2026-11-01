@@ -91,6 +91,7 @@ window.REGISTRY_AR = {
     'nursing-bra':     { name:'حمّالة صدر للرضاعة Juniors بدعم كامل ومشابك قابلة للفتح', priceNote:'مخفضة من ٩٢ ريال' },
     'nursing-pillow':  { name:'وسادة الرضاعة My Brest Friend Super Deluxe' },
     'silverette':      { name:'أغطية حلمة فضية Silverette' },
+    'pumping-spray':   { name:'بخاخ عضوي للشفط Legendairy Milk، خالٍ من اللانولين، ٤ أونصات', priceNote:'يُشحن من خارج السعودية' },
     'pump-spectra':    { name:'شفاط حليب كهربائي Spectra S1 Plus' },
     'pump-eufy':       { name:'شفاط حليب قابل للارتداء eufy S2 Pro' },
     'pj-cotton-1':     { name:'بيجامة قطن ١٠٠٪ بأكمام قصيرة' },
