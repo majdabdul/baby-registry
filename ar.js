@@ -86,7 +86,6 @@ window.REGISTRY_AR = {
     'soofam-toy':      { name:'لعبة مونتيسوري خشبية ٢ في ١ بأسطوانة دوّارة وجرس متدحرج، ٦–١٢ شهرًا' },
     'play-mat':        { name:'جيم خشبي للبيبي بألعاب باستيل' },
     'ubuy-item':       { name:'طاولة تغيير بسطح قابل للطي، ٣ أدراج ورفوف مفتوحة، أبيض' },
-    'dividers':        { name:'فواصل أدراج، ٨ قطع', priceNote:'للقطعة' },
     'storage':         { name:'سلال ÖNSKLIG لطاولة التغيير، ٤ قطع' },
     'nursing-bra':     { name:'حمّالة صدر للرضاعة Juniors بدعم كامل ومشابك قابلة للفتح', priceNote:'مخفضة من ٩٢ ريال' },
     'nursing-pillow':  { name:'وسادة الرضاعة My Brest Friend Super Deluxe' },

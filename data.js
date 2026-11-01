@@ -110,7 +110,6 @@ window.REGISTRY_ITEMS = [
 
   // ---------------- NURSERY ----------------
   { id:'ubuy-item', cat:'nursery', name:'Changing table with foldable top, 3 drawers & open storage, white', store:'Ubuy', qty:1, price:854, url:'https://www.ubuy.com.sa/en/product/TLZ6H6SRI-baby-changing-table-with-foldable-tabletop-white-baby-dresser-with-3-drawers-open-storage-space-modern-diaper-changing-station-with-storage', img:AIMG('81szotkr-SL') },
-  { id:'dividers', cat:'nursery', name:'Drawer dividers, 8-pack', brand:'Vtopmart', store:'Amazon.sa', qty:3, price:53, priceNote:'each', url:AMZ('B09DK9M69S'), img:AIMG('71UDUER5iHL') },
   { id:'storage', cat:'nursery', name:'ÖNSKLIG changing-table baskets, set of 4', brand:'IKEA', store:'IKEA', qty:1, price:60, url:'https://www.ikea.com/sa/en/p/oensklig-stor-baskets-changing-tbl-set-of-4-white-30199283/', img:'https://www.ikea.com/sa/en/images/products/oensklig-stor-baskets-changing-tbl-set-of-4-white__0711380_pe728172_s5.jpg' },
 
   // ---------------- FOR MAMA ----------------
