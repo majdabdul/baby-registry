@@ -106,6 +106,7 @@ window.REGISTRY_ITEMS = [
   { id:'toys-bw', cat:'play', name:'Black & white high-contrast toys', store:'Amazon.sa', qty:1, price:40, url:AMZ('B09VGSRPNL'), img:AIMG('81Bri2LIWtL') },
   { id:'monkibox', cat:'play', name:'“Look With Me” Montessori play box, 0–12 weeks', brand:'Monkibox', store:'Monkibox', qty:1, price:479, url:'https://monkibox.com/en-sa/products/0-12-weeks', img:'https://cdn.shopify.com/s/files/1/1870/2831/files/2_7023d5e7-de70-4c33-9fef-3a758af2f9fe.png?v=1784201360' },
   { id:'soofam-toy', cat:'play', name:'2-in-1 wooden Montessori spinning drum & rolling bell, 6–12 months', brand:'Soofam', store:'Amazon.sa', qty:1, price:70, url:AMZ('B0GR2NH3KM'), img:AIMG('715m1iqAkvL') },
+  { id:'arabic-cubes', cat:'play', name:'Wooden Arabic alphabet cubes with pull cart (48 cubes)', brand:'Dardasha', store:'Dardasha', qty:1, price:199, priceNote:'AED 195, approx.', url:'https://dardasha.com/products/wooden-alphabet-cubes', img:'https://cdn.shopify.com/s/files/1/0537/3421/1752/files/dardashatoy1copy.jpg?v=1707460106' },
   { id:'play-mat', cat:'play', name:'Wooden play gym with pastel toys', store:'Amazon.sa', qty:1, price:127, url:AMZ('B0DYCN7D19'), img:AIMG('61JdW0fJQaL') },
 
   // ---------------- NURSERY ----------------
