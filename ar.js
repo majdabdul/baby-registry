@@ -38,6 +38,7 @@ window.REGISTRY_AR = {
     'dreampod':        { name:'كيس نوم Dreampod ٠–٦ شهور، طبعة ورود Berry', priceNote:'مخفض من ٣١٩ ريال' },
     'monitor':         { name:'شاشة مراقبة البيبي الذكية VTech Smart HD Plus بشاشة ٥.٥ إنش وواي فاي' },
     'sound-machine':   { name:'جهاز الضوضاء البيضاء وضوء النوم Hatch Rest', priceNote:'تقريبًا — السعر يتغير كثيرًا' },
+    'dreamegg':        { name:'جهاز ضوضاء بيضاء محمول وضوء نوم Dreamegg، ٢١ صوتًا، قابل للشحن', priceNote:'السعر على Amazon.sa' },
     'diapers-nb':      { name:'حفاضات Bambo Nature الصديقة للبيئة، حديثي الولادة' },
     'diapers-1':       { name:'حفاضات Bambo Nature الصديقة للبيئة، مقاس ١ (٢–٥ كجم)' },
     'wipes':           { name:'مناديل WaterWipes Sensitive+ مبللة، ١٢ عبوة' },

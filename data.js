@@ -48,6 +48,7 @@ window.REGISTRY_ITEMS = [
   { id:'dreampod', cat:'sleep', name:'Dreampod sleeping bag 0–6 months, Berry peony print', brand:'Mamas & Papas', store:'Mamas & Papas', qty:1, price:219, priceNote:'on sale from SAR 319', url:'https://en.mamasandpapas.com.sa/dreampod-0-6-months---2.5-tog---berry-217814573.html', img:'https://mamasandpapas.com.sa/dw/image/v2/BDSP_PRD/on/demandware.static/-/Sites-MnP-master-catalog/default/dwbd253e87/sfcc-mnp-production/2/1/7/8/1/217814573_FR.jpg?sw=540&sh=720&sm=fit&q=90' },
   { id:'monitor', cat:'sleep', name:'Smart HD Plus Wi-Fi video baby monitor, 5.5" HD display', brand:'VTech', store:'Amazon.sa', qty:1, price:859, url:AMZ('B0DP56RQ4W'), img:AIMG('71x0BpJ0PKL') },
   { id:'sound-machine', cat:'sleep', name:'Hatch Rest sound machine & night light', brand:'Hatch', store:'Amazon.sa', qty:1, price:421, priceNote:'approx. — price varies a lot', url:AMZ('B08QVG9759'), img:AIMG('51vOkfnRDNL'), alt:[{label:'Other listings', url:AMZS('Hatch Rest sound machine')}] },
+  { id:'dreamegg', cat:'sleep', name:'Portable sound machine & night light, 21 sounds, USB rechargeable', brand:'Dreamegg', store:'Amazon.sa', qty:1, priceNote:'See price on Amazon.sa', url:AMZ('B0DKJPKQZ9'), img:'img/dreamegg.jpg' },
 
   // ---------------- DIAPERING ----------------
   { id:'diapers-nb', cat:'diapering', name:'Bambo Nature eco diapers, Newborn', brand:'Bambo Nature', store:'Amazon.sa', qty:2, price:68, url:AMZ('B07Y4HVL2Q'), img:AIMG('81+7TyEpWoL'), alt:[{label:'Pampers Pure, Size 0 (76 pcs)', url:AMZ('B082QBHW74')}] },
