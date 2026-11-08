@@ -75,7 +75,6 @@ window.REGISTRY_AR = {
     'detergent':       { name:'منظّف غسيل للبيبي بدون عطر' },
     'gripe-water':     { name:'ماء غريب Mommy\'s Bliss (طقم عناية)' },
     'car-seat':        { name:'مقعد سيارة Jikel Venus 360 i-Size بمروحة مدمجة، وردي (من الولادة حتى ٨ سنوات)', priceNote:'مخفض من ٢٬٧٣٧ ريال' },
-    'yoyo-6':          { name:'طقم ألوان YOYO 6+، لون Toffee' },
     'yoyo-0':          { name:'طقم حديثي الولادة YOYO 0+' },
     'yoyo-base':       { name:'قماش قاعدة عربة YOYO، أسود' },
     'yoyo-handle':     { name:'أغطية مقبض نيوبرين لعربة YOYO' },
